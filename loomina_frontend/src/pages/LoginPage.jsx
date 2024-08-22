@@ -6,11 +6,23 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate(); // Initialize useNavigate
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can add authentication logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
+    const response = await fetch('http://127.0.0.1:5000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await response.json();
+    
+    if (response.status === 200) {
+      localStorage.setItem('token', data.access_token);  // Store the token
+      navigate('/protected');  // Navigate to a protected route after successful login
+    } else {
+      alert(data.msg);
+    }
   };
 
   const handleSignUpClick = () => {
