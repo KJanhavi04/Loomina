@@ -1,0 +1,128 @@
+.spark-container {
+    padding: 20px;
+  }
+  
+  .spark-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .spark-header-title {
+    flex-grow: 1;
+    border: none; /* Remove all borders */
+    border-bottom: 1px solid #ccc; /* Add bottom border only */
+    padding: 8px;
+    outline: none; /* Remove default outline */
+    background-color: transparent; /* Make background transparent */
+    transition: border-bottom-color 0.3s ease; /* Smooth transition for border color */
+  }
+  
+  .spark-header-title.editable {
+    border-bottom-color: #007bff; /* Change border color when editable */
+  }
+  
+  .spark-header-title:not(.editable) {
+    cursor: pointer; /* Change cursor to pointer */
+  }
+
+  .spark-textarea-cancel {
+    position: absolute;
+    top: 10px; /* Adjust to position inside the textarea */
+    right: 10px; /* Adjust to position inside the textarea */
+    color: #721c24; /* Text color for the cancel button */
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .spark-header-icon {
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .spark-textarea-container {
+    position: relative; /* Needed for absolute positioning of the line */
+    margin-bottom: 15px;
+  }
+  
+  .spark-textarea {
+    position: relative;
+    padding-left: 20px; /* Space for the line on the left */
+    margin-bottom: 15px;
+  }
+  
+  .spark-textarea textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: none;
+    box-sizing: border-box;
+  }
+  
+  /* Line connecting the textareas */
+  .spark-textarea:not(:first-of-type)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: calc(100% + 15px); /* Adjust height to connect with the next textarea */
+    background-color: #ccc;
+  }
+  
+  /* Make sure the line only appears for textareas that have a preceding textarea */
+  .spark-textarea:first-of-type::before {
+    display: none;
+  }
+  
+  .spark-components {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .spark-formatting {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .spark-formatting svg {
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .spark-add-more {
+    background-color: #f0f0f0;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .spark-post {
+    text-align: right;
+  }
+  
+  .post-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
