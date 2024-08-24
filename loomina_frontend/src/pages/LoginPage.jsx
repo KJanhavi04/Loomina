@@ -24,7 +24,7 @@ const Login = () => {
         console.log('Login successful:', data);
         localStorage.setItem('token', data.token); // Store JWT token
         // Navigate to another page or show success message
-        navigate('/dashboard'); // Example: Redirect to a dashboard
+        navigate('/user'); // Example: Redirect to a dashboard
       } else {
         console.log('Login failed:', data.message);
         // Show an error message
