@@ -1,9 +1,7 @@
-# backend/app/__init__.py
-
 from flask import Flask
 from flask_cors import CORS
 from config import Config
-from .extensions import db, login_manager, jwt
+from .extensions import db, jwt
 
 def create_app():
     app = Flask(__name__)
@@ -11,7 +9,6 @@ def create_app():
 
     # Initialize extensions
     db.init_app(app)
-    login_manager.init_app(app)
     jwt.init_app(app)
 
     # Add CORS configuration
