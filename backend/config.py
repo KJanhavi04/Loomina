@@ -5,7 +5,7 @@ class Config:
     SECRET_KEY = 'd2b1d6a4b9da4721ae111b331d481168'
     MONGODB_SETTINGS = {
         'db': 'Loomina',
-        'host': 'localhost',
+        'host': 'mongodb+srv://namita:ULgdPinyedUhGqkt@loomina.iuyus.mongodb.net/loomina?retryWrites=true&w=majority',
         'port': 27017
     }
     DEBUG = True

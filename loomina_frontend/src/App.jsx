@@ -12,7 +12,7 @@ const App = () => {
       <div className="App">
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/register" element={<SignupPage />} />
+          <Route path="/signup" element={<SignupPage />} />
           <Route path="/user" element={<UserProfile />} />
           {/* Add other routes here as needed */}
         </Routes>
