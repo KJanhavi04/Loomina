@@ -1,32 +1,41 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://127.0.0.1:5000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await response.json();
-    
-    if (response.status === 200) {
-      localStorage.setItem('token', data.access_token);  // Store the token
-      navigate('/protected');  // Navigate to a protected route after successful login
-    } else {
-      alert(data.msg);
+
+    try {
+      const response = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Login successful:', data);
+        localStorage.setItem('token', data.token); // Store JWT token
+        // Navigate to another page or show success message
+        navigate('/dashboard'); // Example: Redirect to a dashboard
+      } else {
+        console.log('Login failed:', data.message);
+        // Show an error message
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
     }
   };
 
   const handleSignUpClick = () => {
-    navigate('/signup'); // Navigate to the signup page
+    navigate('/signup');
   };
 
   return (

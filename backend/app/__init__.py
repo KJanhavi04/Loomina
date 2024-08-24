@@ -1,19 +1,23 @@
 from flask import Flask
+from flask_login import LoginManager
 from flask_jwt_extended import JWTManager
-from flask_cors import CORS
+from flask_mongoengine import MongoEngine
+from flask_cors import CORS  # Import CORS
 
-def create_app():
-    app = Flask(__name__)
-    app.config.from_object('config.Config')
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'd2b1d6a4b9da4721ae111b331d481168'
+app.config['MONGODB_SETTINGS'] = {
+    'db': 'Loomina',
+    'host': 'localhost',
+    'port': 27017
+}
 
-    # Initialize JWT Manager using the key from config.py
-    jwt = JWTManager(app)
+db = MongoEngine(app)
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+jwt = JWTManager(app)
 
-    # Enable CORS
-    CORS(app)
+# Add CORS configuration
+CORS(app, resources={r"/*": {"origins": "*"}}, methods=["GET", "POST", "OPTIONS"], headers=["Content-Type", "Authorization"])
 
-    # Register blueprints or routes
-    from .routes import auth as auth_blueprint
-    app.register_blueprint(auth_blueprint)
-
-    return app
+from app import routes, auth  # Import routes and authentication logic

@@ -1,8 +1,5 @@
-// src/pages/SignupPage.jsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-
-// import './SignupPage.css'; // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom';
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +7,7 @@ const SignupPage = () => {
     email: '',
     password: '',
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -20,22 +18,28 @@ const SignupPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    const response = await fetch('http://127.0.0.1:5000/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
 
-    const data = await response.json();
+    try {
+      const response = await fetch('http://localhost:5000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    if (response.status === 201) {
-      alert(data.msg);
-      navigate('/');  // Navigate to login page after successful signup
-    } else {
-      alert(data.msg);
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Signup successful:', data);
+        // Navigate to login page or another page
+        navigate('/');
+      } else {
+        console.log('Signup failed:', data.message);
+        // Show an error message
+      }
+    } catch (error) {
+      console.error('Error during signup:', error);
     }
   };
 
