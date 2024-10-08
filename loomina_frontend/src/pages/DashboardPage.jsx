@@ -1,25 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/Dashboard.css'; // Assuming you're using CSS for styling
+
+import image1 from '../images/image1.jpeg';
+import image2 from '../images/image2.jpeg';
+import image3 from '../images/image3.jpeg';
 
 const Dashboard = () => {
   // Dummy data to populate sections dynamically
-  const sparks = ['Spark 1', 'Spark 2', 'Spark 3', 'Spark 4', 'Spark 5'];
+  const sparks = [
+    'Spark 1', 'Spark 2', 'Spark 3', 'Spark 4', 'Spark 5',
+    'Spark 1', 'Spark 2', 'Spark 3', 'Spark 4', 'Spark 5',
+    'Spark 1', 'Spark 2', 'Spark 3', 'Spark 4', 'Spark 5',
+    'Spark 1', 'Spark 2', 'Spark 3', 'Spark 4', 'Spark 5'
+  ];
+
   const trendingThreads = [
+    { id: 1, sparks: ['Thread 1 - Spark 1', 'Thread 1 - Spark 2'] },
+    { id: 2, sparks: ['Thread 2 - Spark 1', 'Thread 2 - Spark 2'] },
+    { id: 3, sparks: ['Thread 3 - Spark 1', 'Thread 3 - Spark 2'] },
+    { id: 4, sparks: ['Thread 4 - Spark 1', 'Thread 4 - Spark 2'] },
+    { id: 1, sparks: ['Thread 1 - Spark 1', 'Thread 1 - Spark 2'] },
+    { id: 2, sparks: ['Thread 2 - Spark 1', 'Thread 2 - Spark 2'] },
+    { id: 3, sparks: ['Thread 3 - Spark 1', 'Thread 3 - Spark 2'] },
+    { id: 4, sparks: ['Thread 4 - Spark 1', 'Thread 4 - Spark 2'] },
+    { id: 1, sparks: ['Thread 1 - Spark 1', 'Thread 1 - Spark 2'] },
+    { id: 2, sparks: ['Thread 2 - Spark 1', 'Thread 2 - Spark 2'] },
+    { id: 3, sparks: ['Thread 3 - Spark 1', 'Thread 3 - Spark 2'] },
+    { id: 4, sparks: ['Thread 4 - Spark 1', 'Thread 4 - Spark 2'] },
     { id: 1, sparks: ['Thread 1 - Spark 1', 'Thread 1 - Spark 2'] },
     { id: 2, sparks: ['Thread 2 - Spark 1', 'Thread 2 - Spark 2'] },
     { id: 3, sparks: ['Thread 3 - Spark 1', 'Thread 3 - Spark 2'] },
     { id: 4, sparks: ['Thread 4 - Spark 1', 'Thread 4 - Spark 2'] },
   ];
 
+  // Slideshow images
+  const storyImages = [image1, image2, image3];
+
+  // State to manage current image index
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Effect to change image at intervals
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % storyImages.length);
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, [storyImages.length]);
+
   return (
     <div className="dashboard">
       {/* Slideshow Section */}
       <div className="slideshow-container">
         <div className="slideshow">
-          <div className="slide">Story Image 1</div>
-          <div className="slide">Story Image 2</div>
-          <div className="slide">Story Image 3</div>
+          <div className="slide">
+            <img src={storyImages[currentImageIndex]} alt={`Story Image ${currentImageIndex + 1}`} />
+          </div>
         </div>
+
       </div>
 
       {/* Spark for You Section */}

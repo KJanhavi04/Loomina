@@ -1,65 +1,75 @@
 .dashboard {
-    padding: 20px;
-  }
-  
-  .slideshow-container {
-    width: 100%;
-    height: 300px;
-    background-color: #222;
-    margin-bottom: 20px;
-  }
-  
-  .slideshow {
-    display: flex;
-    overflow: hidden;
-  }
-  
-  .slide {
-    width: 100%;
-    height: 100%;
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-  }
-  
-  .spark-for-you, .trending-threads {
-    margin-bottom: 30px;
-  }
-  
-  .section-title {
-    font-size: 20px;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  /* Horizontal scroll styling */
-  .spark-scroll, .trending-scroll {
-    display: flex;
-    overflow-x: auto;
-    gap: 10px;
-    padding-bottom: 10px;
-  }
-  
-  .spark-scroll::-webkit-scrollbar,
-  .trending-scroll::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for better UX */
-  }
-  
-  .spark, .thread {
-    background-color: #eee;
-    padding: 15px;
-    border-radius: 8px;
-    flex-shrink: 0;
-    width: 200px; /* Set a fixed width for items */
-  }
-  
-  .spark-preview {
-    background-color: #ddd;
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 5px;
-  }
-  
+  padding: 0 20px; /* Reduce top and bottom padding */
+  margin: 0 auto; /* Center the dashboard */
+}
+
+.slideshow-container {
+  width: 100%;
+  height: 300px; /* Fixed height */
+  background-color: #222;
+  margin-bottom: 20px;
+  overflow: hidden; /* Ensure no overflow */
+}
+
+.slideshow {
+  display: flex;
+  height: 100%; /* Match the height of the container */
+}
+
+.slide {
+  width: 100%; /* Full width of the slideshow */
+  height: 100%; /* Full height of the slideshow */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide img {
+  width: 100%; /* Full width of the slide */
+  height: 100%; /* Full height of the slide */
+  object-fit: cover; /* Center crop the image while covering the area */
+}
+
+
+.spark-for-you,
+.trending-threads {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Horizontal scroll styling */
+.spark-scroll,
+.trending-scroll {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  gap: 10px;
+  padding-bottom: 10px;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.spark-scroll::-webkit-scrollbar,
+.trending-scroll::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.spark,
+.thread {
+  background-color: #eee;
+  padding: 15px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  width: 200px; /* Set a fixed width for items */
+}
+
+.spark-preview {
+  background-color: #ddd;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
