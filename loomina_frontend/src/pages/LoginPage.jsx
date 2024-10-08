@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-const Login = () => {
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+ 
+const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Login = () => {
         console.log('Login successful:', data);
         localStorage.setItem('token', data.token); // Store JWT token
         // Navigate to another page or show success message
-        navigate('/dashboard'); // Example: Redirect to a dashboard
+        navigate('/user'); // Example: Redirect to a dashboard
       } else {
         console.log('Login failed:', data.message);
         // Show an error message
@@ -67,4 +67,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
