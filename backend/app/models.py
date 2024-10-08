@@ -17,6 +17,7 @@ class User(Document):
 # Define a Thread model representing discussion threads
 class Thread(Document):
     threadId = StringField(required=True, unique=True)  # Unique identifier for the thread
+    threadTitle = StringField(required=True) # Title of the thread (story)
     timestamp = DateTimeField(required=True)  # Timestamp when the thread was created
     userId = ReferenceField(User, required=True)  # Reference to the user who created the thread
     noOfComments = IntField(default=0)  # Number of comments in the thread
