@@ -2,6 +2,8 @@ from flask import Flask
 from flask_cors import CORS
 from config import Config
 from .extensions import db, jwt
+from .routes.auth_routes import auth_bp
+from .routes.user_routes import user_bp
 
 def create_app():
     app = Flask(__name__)
@@ -14,8 +16,8 @@ def create_app():
     # Add CORS configuration
     CORS(app, resources={r"/*": {"origins": "*"}}, methods=["GET", "POST", "OPTIONS"], headers=["Content-Type", "Authorization"])
 
-    # Import and register blueprints
-    from . import auth
-    app.register_blueprint(auth.bp)
+    # Register blueprints
+    app.register_blueprint(auth_bp, url_prefix='/auth')
+    app.register_blueprint(user_bp)
 
     return app
