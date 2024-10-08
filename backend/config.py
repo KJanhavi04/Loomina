@@ -8,4 +8,9 @@ class Config:
         'host': 'mongodb+srv://namita:ULgdPinyedUhGqkt@loomina.iuyus.mongodb.net/loomina?retryWrites=true&w=majority',
         'port': 27017
     }
+    MONGODB_SETTINGS = {
+        'db': 'Loomina',
+        'host': 'mongodb+srv://namita:ULgdPinyedUhGqkt@loomina.iuyus.mongodb.net/loomina?retryWrites=true&w=majority',
+        'port': 27017
+    }
     DEBUG = True

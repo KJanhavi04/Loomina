@@ -38,8 +38,23 @@ const UserProfile = () => {
       <h2>User Profile</h2>
       <p><strong>Username:</strong> {user.username}</p>
       <p><strong>Email:</strong> {user.email}</p>
+      <h3>Reading List:</h3>
+      {user.readingList && user.readingList.length > 0 ? (
+        <ul>
+          {user.readingList.map((item, index) => (
+            <li key={index}>
+              <p><strong>Thread ID:</strong> {item.threadId}</p>
+              <p><strong>Current Spark:</strong> {item.currentSpark}</p>
+              <p><strong>Last Access Time:</strong> {new Date(item.lastAccessTime).toLocaleString()}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No items in the reading list.</p>
+      )}
     </div>
   );
+  
 };
 
 export default UserProfile;
