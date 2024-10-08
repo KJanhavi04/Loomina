@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from models.thread import Thread
-from models.user import User
+from ..models.thread import Thread
+from ..models.user import User
 from mongoengine import DoesNotExist
 
 thread_bp = Blueprint('thread', __name__)

@@ -1,5 +1,6 @@
+# app/models/user.py
 from mongoengine import Document, StringField, ListField, EmbeddedDocumentField
-from .reading_list import ReadingListItem  # Assuming ReadingListItem is in a separate file
+from .reading_list import ReadingListItem
 
 class User(Document):
     username = StringField(max_length=20, required=True, unique=True)

@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
-from models.spark import Spark
-from models.thread import Thread
-from models.user import User
+from ..models.spark import Spark
+from ..models.thread import Thread
+from ..models.user import User
 from mongoengine import DoesNotExist
 
 spark_bp = Blueprint('spark', __name__)

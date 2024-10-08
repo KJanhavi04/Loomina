@@ -1,16 +1,26 @@
-from flask import Blueprint, request, jsonify
-from models.user import User
+# app/routes/user_routes.py
+from flask import Blueprint, jsonify
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from ..models.user import User
 
 user_bp = Blueprint('user', __name__)
 
-@user_bp.route('/register', methods=['POST'])
-def register():
-    data = request.json
-    user = User(username=data['username'], email=data['email'], password=data['password'])
-    user.save()
-    return jsonify({"message": "User registered successfully."}), 201
-
-@user_bp.route('/users', methods=['GET'])
-def get_users():
-    users = User.objects().to_json()
-    return jsonify(users), 200
+@user_bp.route('/user', methods=['GET'])
+@jwt_required()
+def get_user():
+    user_id = get_jwt_identity()
+    user = User.objects(id=user_id).first()
+    if user:
+        user_data = {
+            'username': user.username,
+            'email': user.email,
+            'readingList': [
+                {
+                    'threadId': item.threadId,
+                    'currentSpark': item.currentSpark,
+                    'lastAccessTime': item.lastAccessTime.isoformat()
+                } for item in user.readingList
+            ]
+        }
+        return jsonify(user_data), 200
+    return jsonify(message="User not found"), 404

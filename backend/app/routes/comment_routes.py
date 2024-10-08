@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
-from models.comment import ThreadComment, SparkComment
-from models.thread import Thread
-from models.user import User
+from ..models.comment import ThreadComment, SparkComment
+from ..models.thread import Thread
+from ..models.user import User
 from mongoengine import DoesNotExist
 
 comment_bp = Blueprint('comment', __name__)
