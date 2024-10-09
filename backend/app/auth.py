@@ -32,6 +32,7 @@ def register():
     user = User(username=data['name'], email=data['email'], password=hashed_password, readingList=reading_list)
     try:
         user.save()
+        
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     return jsonify(message="User registered successfully"), 201
