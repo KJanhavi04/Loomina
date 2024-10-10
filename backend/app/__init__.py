@@ -19,7 +19,7 @@ def create_app():
 
     # Register blueprints
     app.register_blueprint(auth_bp, url_prefix='/auth')
-    app.register_blueprint(user_bp)
+    app.register_blueprint(user_bp, url_prefix='/user')
     app.register_blueprint(thread_bp, url_prefix='/thread')
 
     return app

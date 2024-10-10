@@ -4,6 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from ..extensions import db, jwt
 from ..models.user import User
+
 from datetime import datetime
 
 auth_bp = Blueprint('auth', __name__)
@@ -19,16 +20,11 @@ def register():
     reading_list_data = data.get('readingList', [])
     reading_list = []
 
-    for item in reading_list_data:
-        try:
-            item['lastAccessTime'] = datetime.fromisoformat(item['lastAccessTime'])
-        except ValueError:
-            return jsonify({'error': 'Invalid date format for lastAccessTime'}), 400
-        reading_list.append(ReadingListItem(**item))
-
     user = User(username=data['name'], email=data['email'], password=hashed_password, readingList=reading_list)
     try:
         user.save()
+        # Set the generated ObjectId as threadId
+        user.update(userId=str(user.id))
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     return jsonify(message="User registered successfully"), 201
