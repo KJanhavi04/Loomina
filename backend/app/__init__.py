@@ -15,12 +15,12 @@ def create_app():
     jwt.init_app(app)
 
     # Add CORS configuration
-    CORS(app, resources={r"/*": {"origins": "*"}}, methods=["GET", "POST", "OPTIONS"], headers=["Content-Type", "Authorization"])
+    CORS(app, resources={r"/*": {  "origins":'*'}}, methods=["GET", "POST", "OPTIONS"], headers=["Content-Type", "Authorization"])
 
     # Register blueprints
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(user_bp)
-    app.register_blueprint(spark_bp)
+    app.register_blueprint(spark_bp, url_prefix='/spark')
     
 
     return app
