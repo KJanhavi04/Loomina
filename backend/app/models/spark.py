@@ -4,7 +4,7 @@ from .user import User
 
 class Spark(Document):
     sparkId = StringField(unique=True)
-    # threadId = ReferenceField(Thread, required=True)
+    threadId = ReferenceField(Thread, required=True)
     userId = ReferenceField(User, required=True)
     sparkText = StringField(required=True)
     timestamp = DateTimeField(required=False)
