@@ -2,21 +2,49 @@ from flask import Blueprint, request, jsonify
 from ..models.spark import Spark
 from ..models.thread import Thread
 from ..models.user import User
-from mongoengine import DoesNotExist
+from mongoengine import DoesNotExist, ValidationError
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from datetime import datetime
+
 
 spark_bp = Blueprint('spark', __name__)
 
-@spark_bp.route('/create-spark', methods=['POST'])
+@spark_bp.route('/sparks', methods=['POST'])
+@jwt_required()
 def add_spark():
     try:
         data = request.get_json()
-        print(data)
+        print(data, data['userId'])
         user = User.objects.get(userId=data['userId'])  # Assuming username is provided
-        # thread = Thread.objects.get(threadId=data['threadId'])
-        print(data)
-        spark = Spark(sparkId=data['sparkId'], userId=user, sparkText=data['sparkText'], timestamp=data['timestamp'])
+        thread = Thread.objects.get(threadId='670685712825a6c052955e59')
+
+         # Get the current user
+        user_id = get_jwt_identity()
+        print(user_id)
+        user = User.objects(id=user_id).first()
+        if not user:
+            print(user)
+            return jsonify({"error": "User not found."}), 404
+        
+        
+        
+        spark = Spark(
+         threadId=thread,
+         userId=user, 
+         sparkText=data['sparkText'], 
+         timestamp=datetime.now(),
+         noOfLikes=0,
+         noOfComments=0,
+         likedBy=[],
+         prevSparkId='',
+         isStart='true'
+         )
         spark.save()
+        spark.update(sparkId=str(spark.id))
         return jsonify({"message": "Spark added successfully."}), 201
+    
+    except ValidationError as e:
+        return jsonify({"error": str(e)}), 400
     except Exception as e:
         print(e)
         return jsonify({"message": "lol"}), 400

@@ -149,6 +149,7 @@
 
 // export default CreateSpark;
 
+
 import React, { useState, useRef, useEffect } from 'react';
 import '../css/CreateSpark.css';
 
@@ -173,16 +174,19 @@ const CreateSpark = () => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:5000/user', {
+        console.log('Token:', token);
+        const response = await fetch('http://localhost:5000/user/user', {
           method: 'GET',
           headers: {
+            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
           },
         });
 
         const data = await response.json();
         if (response.ok) {
-          setUser(data); // Set the user details, including username
+          setUser(data);
+          console.log(data) // Set the user details, including username
         } else {
           console.log('Failed to fetch user details:', data.message);
         }
@@ -196,30 +200,34 @@ const CreateSpark = () => {
 
   const handlePostSpark = async () => {
     if (currentSpark.trim() !== '') {
+      const token = localStorage.getItem('token');
       try {
-        const response = await fetch('http://localhost:5000/spark/create-spark', {
+        const response = await fetch('http://localhost:5000/spark/sparks', {
           method: 'POST',
-          mode: 'no-cors',
+          // mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include the token if required
+            'Authorization': `Bearer ${token}`, 
           },
           
           body: JSON.stringify({
-            userId: user.id,
-            // threadId: threadId, // Make sure you have threadId available in your component
+            userId: user.userId,
+            threadId: '670685712825a6c052955e59', // Make sure you have threadId available in your component
             sparkText: currentSpark,
-            timestamp: new Date().toISOString(), // Use the current timestamp
           }),
         });
-  
+        const result = await response.json();
+       
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
+        }else{
+          console.log("Spark created succesfully ui.");
         }
-        console.log(userId)
-        const data = await response.json();
-        console.log(data.message); // Optional: Log the response message
-        setSparks([...sparks, currentSpark]); // Update local state
+        console.log(result);
+        console.log(user.userId)
+        // const data = await response.json();
+        // console.log(data.message); // Optional: Log the response message
+        setSparks(currentSpark); // Update local state
         setCurrentSpark('');
         setShowDialog(false);
       } catch (error) {

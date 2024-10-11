@@ -101,7 +101,7 @@ const Dashboard = () => {
       if (response.ok) {
         console.log('Thread created successfully:', result);
         closeModal();
-        window.location.href = '/create-spark';
+        window.location.href = '/sparks';
       } else {
         console.error('Error creating thread:', result.message);
       }
