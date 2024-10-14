@@ -1,0 +1,36 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #000814;
+    border-bottom: 2px solid #2d3748;
+    color: #ddd;
+  }
+  
+  .search {
+    width: 300px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border-bottom: 2px solid #cbd5e0;
+    background-color: #2d3748;
+  }
+  
+  .profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #ddd;
+  }
+  
+  .username {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
