@@ -3,15 +3,17 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: #f7fafc;
-    border-bottom: 1px solid #e2e8f0;
+    background-color: #000814;
+    border-bottom: 2px solid #2d3748;
+    color: #ddd;
   }
   
   .search {
     width: 300px;
     padding: 8px 12px;
     border-radius: 6px;
-    border: 1px solid #cbd5e0;
+    border-bottom: 2px solid #cbd5e0;
+    background-color: #2d3748;
   }
   
   .profile {
@@ -24,6 +26,7 @@
     height: 35px;
     border-radius: 50%;
     margin-right: 10px;
+    background-color: #ddd;
   }
   
   .username {

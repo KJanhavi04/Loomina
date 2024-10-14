@@ -6,11 +6,11 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-left">
-          <h2>Build beautiful landing pages fast using Rareblocks Kit.</h2>
+          <h2>Loomina✨- Weave your imagination with AI</h2>
         </div>
         <div className="footer-right">
-          <p><i className="fa fa-map-marker"></i> 8502 Preston Rd. Inglewood, Maine 98380, USA</p>
-          <p><i className="fa fa-envelope"></i> support@rareblocks.xyz</p>
+          <p><i className="fa fa-map-marker"></i> VIT, mumbai chya pori!</p>
+          <p><i className="fa fa-envelope"></i> shrujan@gmail.com</p>
         </div>
       </div>
       <div className="footer-bottom">
@@ -20,7 +20,7 @@ const Footer = () => {
           <li><a href="#">Works</a></li>
           <li><a href="#">Support</a></li>
         </ul>
-        <p>&copy; Copyright 2021, All Rights Reserved</p>
+        <p>&copy; Copyright 2024, All Rights Reserved</p>
       </div>
     </footer>
   );
