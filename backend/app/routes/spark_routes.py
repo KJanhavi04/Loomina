@@ -9,7 +9,7 @@ from datetime import datetime
 
 spark_bp = Blueprint('spark', __name__)
 
-@spark_bp.route('/sparks', methods=['POST'])
+@spark_bp.route('/create-spark', methods=['POST'])
 @jwt_required()
 def add_spark():
     try:
