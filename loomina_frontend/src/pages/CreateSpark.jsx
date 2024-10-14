@@ -150,8 +150,12 @@
 // export default CreateSpark;
 
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 import '../css/CreateSpark.css';
+// import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
+
 
 const CreateSpark = () => {
   const [showDialog, setShowDialog] = useState(false);
@@ -165,10 +169,13 @@ const CreateSpark = () => {
   const sparkInputRef = useRef(null); // Reference for the contentEditable spark input
 
   // Hardcoded thread title and prompt
+  const location = useLocation();
+  const { threadId } = location.state || {}; 
+  console.log("Thread ID from params:", threadId);
+
   const threadTitle = "Game of Love";
   // const threadId = "hardcoded_threadId"; // Replace with actual thread ID
   const promptText = "When women denied marrying freedom fighters";
-
   // Fetch user details
   useEffect(() => {
     const fetchUser = async () => {
@@ -202,7 +209,11 @@ const CreateSpark = () => {
     if (currentSpark.trim() !== '') {
       const token = localStorage.getItem('token');
       try {
-        const response = await fetch('http://localhost:5000/spark/sparks', {
+        // const { threadId } = useParams()
+        
+
+
+        const response = await fetch('http://localhost:5000/spark/create-spark', {
           method: 'POST',
           // mode: 'no-cors',
           headers: {
@@ -212,7 +223,7 @@ const CreateSpark = () => {
           
           body: JSON.stringify({
             userId: user.userId,
-            threadId: '670685712825a6c052955e59', // Make sure you have threadId available in your component
+            threadId: threadId, // Make sure you have threadId available in your component
             sparkText: currentSpark,
           }),
         });
@@ -227,7 +238,8 @@ const CreateSpark = () => {
         console.log(user.userId)
         // const data = await response.json();
         // console.log(data.message); // Optional: Log the response message
-        setSparks(currentSpark); // Update local state
+        // setSparks((prevSparks) => [...prevSparks, currentSpark]); // Update local state
+        setSparks(currentSpark);
         setCurrentSpark('');
         setShowDialog(false);
       } catch (error) {

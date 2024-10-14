@@ -16,7 +16,7 @@ def add_spark():
         data = request.get_json()
         print(data, data['userId'])
         user = User.objects.get(userId=data['userId'])  # Assuming username is provided
-        thread = Thread.objects.get(threadId='670685712825a6c052955e59')
+        threadId = data.get('threadId')
 
          # Get the current user
         user_id = get_jwt_identity()
@@ -27,9 +27,10 @@ def add_spark():
             return jsonify({"error": "User not found."}), 404
         
         
-        
+        print(f"Received data: {data}")  # This will print the received request body
+
         spark = Spark(
-         threadId=thread,
+         threadId=threadId,
          userId=user, 
          sparkText=data['sparkText'], 
          timestamp=datetime.now(),
