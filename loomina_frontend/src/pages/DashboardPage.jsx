@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/Dashboard.css';
 import image1 from '../images/image1.jpeg';
 import image2 from '../images/image2.jpeg';
 import image3 from '../images/image3.jpeg';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 
 const Dashboard = () => {
+  const navigate = useNavigate(); // Initialize the navigation hook
   const sparks = [
     'Spark 1', 'Spark 2', 'Spark 3', 'Spark 4', 'Spark 5',
     // ... more sparks
@@ -20,7 +22,7 @@ const Dashboard = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
-  const [formData, setFormData] = useState({
+  const [sparkFormData, setSparkFormData] = useState({
     title: '',
     prompt: '',
     genre: '',
@@ -28,7 +30,7 @@ const Dashboard = () => {
   const [genres, setGenres] = useState([]);
 
   // Change image at intervals
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % storyImages.length);
     }, 5000);
@@ -44,38 +46,37 @@ const Dashboard = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedOption('');
-    setFormData({ title: '', prompt: '', genre: '' });
+    resetForms();
+  };
+
+  const resetForms = () => {
+    setSparkFormData({ title: '', prompt: '', genre: '' });
     setGenres([]);
   };
 
-  // Handle option selection
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-  };
-
-  // Handle form input changes
-  const handleInputChange = (e) => {
+  // Handle form input changes for Spark form
+  const handleSparkInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setSparkFormData({ ...sparkFormData, [name]: value });
   };
 
-  const handleKeyDown = (event) => {
+  // Handle genres input for Spark
+  const handleSparkGenreKeyDown = (event) => {
     if (event.key === ' ') {
-      event.preventDefault(); // Prevent default spacebar behavior
-      if (formData.genre.trim()) {
-        setGenres([...genres, formData.genre.trim()]);
-        setFormData({ ...formData, genre: '' }); // Clear the genre input field
+      event.preventDefault();
+      if (sparkFormData.genre.trim()) {
+        setGenres((prevGenres) => [...prevGenres, sparkFormData.genre.trim()]);
+        setSparkFormData({ ...sparkFormData, genre: '' });
       }
     }
   };
 
   const handleDeleteGenre = (index) => {
-    const newGenres = genres.filter((_, i) => i !== index);
-    setGenres(newGenres);
+    setGenres((prevGenres) => prevGenres.filter((_, i) => i !== index));
   };
 
   const handleCreateSpark = async () => {
-    if (!formData.title || !genres.length) {
+    if (!sparkFormData.title || !genres.length) {
       alert("Title and at least one Genre are required.");
       return;
     }
@@ -88,25 +89,33 @@ const Dashboard = () => {
           'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
-          threadTitle: formData.title,
-          genre: genres, // Send genres as an array
+          threadTitle: sparkFormData.title,
+          genre: genres,
           timestamp: new Date().toISOString(),
-          prompt: formData.prompt,
+          prompt: sparkFormData.prompt,
         }),
       });
 
       const result = await response.json();
-      console.log(result);
-
       if (response.ok) {
         console.log('Thread created successfully:', result);
         closeModal();
-        window.location.href = '/sparks';
+        navigate('/create-spark');
       } else {
         console.error('Error creating thread:', result.message);
       }
     } catch (error) {
       console.error('Error:', error);
+    }
+  };
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+
+    // If "Solo Writing" is selected, redirect to the Create Story page
+    if (option === 'Solo Writing') {
+      closeModal();  // Close the modal before redirect
+      navigate('/create-story');
     }
   };
 
@@ -173,8 +182,8 @@ const Dashboard = () => {
                     type="text"
                     name="title"
                     placeholder="Enter title of the thread"
-                    value={formData.title}
-                    onChange={handleInputChange}
+                    value={sparkFormData.title}
+                    onChange={handleSparkInputChange}
                   />
                 </label>
                 <label>
@@ -182,8 +191,8 @@ const Dashboard = () => {
                   <textarea
                     name="prompt"
                     placeholder="Enter your prompt"
-                    value={formData.prompt}
-                    onChange={handleInputChange}
+                    value={sparkFormData.prompt}
+                    onChange={handleSparkInputChange}
                   ></textarea>
                 </label>
                 <label>
@@ -192,23 +201,28 @@ const Dashboard = () => {
                     type="text"
                     name="genre"
                     placeholder="Enter genre"
-                    value={formData.genre}
-                    onChange={handleInputChange}
-                    onKeyDown={handleKeyDown} // Add keydown handler
+                    value={sparkFormData.genre}
+                    onChange={handleSparkInputChange}
+                    onKeyDown={handleSparkGenreKeyDown}
                   />
                 </label>
-                <div className="genres-tags">
+
+                <div className="genres">
                   {genres.map((genre, index) => (
-                    <span key={index} onClick={() => handleDeleteGenre(index)} style={{ margin: '5px', padding: '5px', border: '1px solid #ccc', display: 'inline-block' }}>
-                      {genre} &times;
+                    <span
+                      key={index}
+                      onClick={() => handleDeleteGenre(index)}
+                      style={{ margin: '5px', padding: '5px', border: '1px solid #ccc', display: 'inline-block' }}
+                    >
+                      {genre} x
                     </span>
                   ))}
                 </div>
-                <button onClick={handleCreateSpark}>Create</button>
+
+                <button onClick={handleCreateSpark}>Submit</button>
               </>
-            ) : (
-              window.location.href = '/solo-writing'
-            )}
+            ) : null}
+            <button className="modal-close" onClick={closeModal}>Close</button>
           </div>
         </div>
       )}

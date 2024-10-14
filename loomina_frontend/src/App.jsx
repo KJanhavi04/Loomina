@@ -7,6 +7,7 @@ import './App.css';
 import UserProfile from './pages/UserProfile';
 import Dashboard from './pages/DashboardPage';
 import CreateSpark from './pages/CreateSpark';
+import CreateStory from './pages/CreateStory';
 
 const App = () => {
   return (
@@ -18,6 +19,8 @@ const App = () => {
           <Route path="/user" element={<UserProfile />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/spark" element={<CreateSpark />} />
+          <Route path="/create-spark" element={<CreateSpark />} />
+          <Route path='/create-story' element={<CreateStory />} />
         </Routes>
       </div>
     </Router>
