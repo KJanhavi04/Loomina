@@ -5,13 +5,12 @@ import CreateSpark from '../../components/create/CreateSpark';
 const DashboardPage = () => {
   return (
     <MasterPage>
-      <div>
-        {/* Placeholder for main content */}
-        {/* <div className="text-3xl text-gray-400">Dashboard Content</div> */}
+      {/* <div>
+      
         <CreateSpark>
 
         </CreateSpark>
-      </div>
+      </div> */}
     </MasterPage>
   );
 };
