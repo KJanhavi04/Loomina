@@ -77,41 +77,47 @@
 
 .reading-list {
   padding-left: 30px;
-  margin-top: 10px;
 }
 
-.mind-map {
-  position: relative;
-  
+.mind-map ul {
+  padding-left: 20px;
 }
 
 .mind-map li {
-  margin: 10px 0;
-  padding: 5px;
-  position: relative;
+  list-style: none;
+  padding: 10px 10px;
 }
 
-.mind-map li::before {
-  content: "";
-  position: absolute;
-  left: -10px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background-color: #ffffff;
+.mind-map .sub-list {
+  padding-left: 20px;
 }
 
 .story-item {
   display: flex;
   align-items: center;
-  gap: 15px;
+  padding-left: 20px;
+  margin-bottom: 5px;
 }
 
 .author-pic {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
+  margin-right: 10px;
 }
+
+.list-title {
+  cursor: pointer;
+  padding-left: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.list-title:hover {
+  color: #ccc;
+}
+
 
 .sidebar-footer {
   padding: 7px;
