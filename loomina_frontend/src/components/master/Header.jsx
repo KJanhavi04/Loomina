@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { FaSearch, FaSignOutAlt } from 'react-icons/fa';
-import '../../css/master/header.css';
+import React, { useState } from "react";
+import { FaSearch, FaSignOutAlt } from "react-icons/fa";
+import ExploreModal from '../modals/ExploreModal.jsx';
+import "../../css/master/header.css";
 
 const Header = () => {
   const [isLogoutVisible, setIsLogoutVisible] = useState(false);
@@ -13,12 +14,29 @@ const Header = () => {
     setIsLogoutVisible(false);
   };
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSearchKeyPress = (e) => {
+    if (e.key === "Enter") {
+      setIsModalOpen(true); // Open modal on pressing Enter
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false); // Close modal
+  };
+
   return (
     <header className="header">
       {/* Search Section */}
       <div className="search-container">
         <FaSearch className="search-icon" />
-        <input type="text" className="search" placeholder="Search..." />
+        <input
+          type="text"
+          className="search"
+          placeholder="Search..."
+          onKeyUp={handleSearchKeyPress}
+        />
       </div>
 
       {/* Profile Section */}
@@ -37,6 +55,10 @@ const Header = () => {
           </div>
         )}
       </div>
+
+      {/* Modal that opens on Enter key */}
+      {/* Render the modal component when isModalOpen is true */}
+      {isModalOpen && <ExploreModal closeModal={closeModal} />}
     </header>
   );
 };

@@ -1,0 +1,102 @@
+/* Background for the modal */
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  
+  /* Modal content box */
+  .modal-content-create {
+    background-color: #000814;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    height: 70%;
+    align-items: center;
+    display: flex;
+    border: 17px #ffffff;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #ffffff;
+}
+  
+  /* Card items inside modal */
+  .modal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 25px;
+    background-color: #2d3748;
+    border-radius: 8px;
+    transition: border 0.1s ease-in-out;
+    cursor: pointer;
+    color: white;
+    width: 80%;
+  }
+  
+  /* Hover effect for the card */
+  .modal-item:hover {
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+  }
+  
+  /* icon-create styles */
+  .icon-create {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #000814; /* Dark background for icon-create */
+  }
+  
+  .icon-create img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Text content */
+  .text {
+    flex-grow: 1;
+    margin-left: 20px;
+  }
+  
+  .text h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .text p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  
+  /* Circular button at the end with an arrow */
+  .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #000814;
+    color: aliceblue;
+    font-size: 18px;
+  }
+  
+  .arrow span {
+    font-size: 20px;
+    margin: 0;
+  }
+  

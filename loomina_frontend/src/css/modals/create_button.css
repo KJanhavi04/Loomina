@@ -1,0 +1,37 @@
+.create-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%; /* Ensures circular shape */
+    background-color: #001432; /* Dark blue color */
+    color: aliceblue;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    border: none; /* No initial border */
+    cursor: pointer;
+    transition: border 0.3s ease-in-out; /* Smooth transition for border */
+    
+  }
+  
+  .create-button:hover {
+    border: 3px solid; /* Apply the border on hover */
+    border-radius: 50%; /* Ensures the border remains circular */
+    border-image-slice: 1;
+    border-image-source: linear-gradient(
+      45deg,
+      red,
+      orange,
+      yellow,
+      green,
+      blue,
+      indigo,
+      violet
+    ); /* Rainbow gradient for the border */
+  }
+  

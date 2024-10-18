@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import "../../css/master/Sidebar.css";
-import { FaHome, FaBookmark, FaUserAlt, FaCog, FaBook } from "react-icons/fa";
+import {
+  FaHome,
+  FaBookmark,
+  FaUserAlt,
+  FaCog,
+  FaBook,
+  FaPlus,
+} from "react-icons/fa";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 const Sidebar = () => {
@@ -35,6 +42,11 @@ const Sidebar = () => {
 
       <ul className="menu">
         <li className="menu-item">
+          <FaPlus className="icon" />
+          {!isCollapsed && <span>Create</span>}
+        </li>
+        
+        <li className="menu-item">
           <FaHome className="icon" />
           {!isCollapsed && <span>Dashboard</span>}
         </li>
@@ -57,7 +69,11 @@ const Sidebar = () => {
           {!isCollapsed && (
             <>
               <span>Reading List</span>
-              {isReadingListOpen ? <BsChevronUp className="icon-list" /> : <BsChevronDown className="icon-list" />}
+              {isReadingListOpen ? (
+                <BsChevronUp className="icon-list" />
+              ) : (
+                <BsChevronDown className="icon-list" />
+              )}
             </>
           )}
         </li>
@@ -68,7 +84,11 @@ const Sidebar = () => {
             <li>
               <div className="list-title" onClick={toggleSparksList}>
                 <span>Sparks</span>
-                {isSparksOpen ? <BsChevronUp className="icon-list" /> : <BsChevronDown className="icon-list" />}
+                {isSparksOpen ? (
+                  <BsChevronUp className="icon-list" />
+                ) : (
+                  <BsChevronDown className="icon-list" />
+                )}
               </div>
               {isSparksOpen && (
                 <ul className="sub-list">
@@ -96,7 +116,11 @@ const Sidebar = () => {
             <li>
               <div className="list-title" onClick={toggleStoriesList}>
                 <span>Stories</span>
-                {isStoriesOpen ? <BsChevronUp className="icon-list" /> : <BsChevronDown className="icon-list" />}
+                {isStoriesOpen ? (
+                  <BsChevronUp className="icon-list" />
+                ) : (
+                  <BsChevronDown className="icon-list" />
+                )}
               </div>
               {isStoriesOpen && (
                 <ul className="sub-list">
