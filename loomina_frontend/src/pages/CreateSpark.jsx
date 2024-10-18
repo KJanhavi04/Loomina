@@ -154,7 +154,7 @@ import React, { useState, useRef, useEffect} from 'react';
 import '../css/CreateSpark.css';
 // import { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const CreateSpark = () => {
@@ -172,6 +172,8 @@ const CreateSpark = () => {
   const location = useLocation();
   const { threadId } = location.state || {}; 
   console.log("Thread ID from params:", threadId);
+
+  const navigate = useNavigate();
 
   const threadTitle = "Game of Love";
   // const threadId = "hardcoded_threadId"; // Replace with actual thread ID
@@ -242,6 +244,7 @@ const CreateSpark = () => {
         setSparks(currentSpark);
         setCurrentSpark('');
         setShowDialog(false);
+        navigate('/user')
       } catch (error) {
         console.error('Error posting spark:', error);
       }
