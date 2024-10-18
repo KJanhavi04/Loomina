@@ -25,9 +25,13 @@ def register():
         user.save()
         # Set the generated ObjectId as threadId
         user.update(userId=str(user.id))
+        # signup
+        if user and bcrypt.check_password_hash(user.password, data['password']):
+            access_token = create_access_token(identity=str(user.id))
+            return jsonify(token=access_token), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    return jsonify(message="User registered successfully"), 201
+    return jsonify(message="User registered successfully",token=access_token), 201
 
 @auth_bp.route('/login', methods=['POST'])
 def login():

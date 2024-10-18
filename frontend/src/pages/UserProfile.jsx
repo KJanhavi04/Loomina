@@ -5,8 +5,10 @@ const UserProfile = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
+      console.log("HELLO!");
       try {
         const token = localStorage.getItem('token');
+        console.log(token);
         const response = await fetch('http://localhost:5000/user/user', {
           method: 'GET',
           headers: {
@@ -23,6 +25,7 @@ const UserProfile = () => {
         }
       } catch (error) {
         console.error('Error fetching user details:', error);
+
       }
     };
 

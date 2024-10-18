@@ -54,7 +54,7 @@ const CreateStory = () => {
 
   const handleSave = async (e) => {
     e.preventDefault();
-
+//
     const formData = new FormData();
     formData.append('title', title);
     formData.append('synopsis', synopsis);
