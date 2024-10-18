@@ -114,6 +114,7 @@
   background: none;
   font-size: 16px;
   transition: 0.3s;
+  color: #000814;
   
 }
 
@@ -138,6 +139,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
+  color: #000814;
 }
 
 .submit-btn {
@@ -157,6 +159,7 @@
 
 .login-prompt {
   text-align: center;
+  color: #002050;
   margin-top: 20px;
 }
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../../css/create/newSolo.css";
+import { useNavigate } from "react-router-dom";
 import MasterPage from "../../components/master/Master";
+
 
 const NewSoloStory = () => {
   const [title, setTitle] = useState("");
@@ -10,10 +12,12 @@ const NewSoloStory = () => {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [genreInput, setGenreInput] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate();
+
 
   const genres = [
     "Fantasy",
-    "Science Fiction", 
+    "Science Fiction",
     "Mystery",
     "Romance",
     "Thriller",
@@ -46,6 +50,54 @@ const NewSoloStory = () => {
     });
   };
 
+//image stuff
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setCoverImage(file);
+      setCoverImagePreview(URL.createObjectURL(file)); // Create a preview of the image
+    }
+  };
+
+  //saving story
+  const handleSave = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("synopsis", synopsis);
+    formData.append("tags", tags.join(",")); // Convert tags array to comma-separated string
+    formData.append("selectedGenres", selectedGenres.join(",")); // Convert genres array to comma-separated string
+
+    if (coverImage) {
+      formData.append("coverImage", coverImage); // Append the image file here
+    }
+
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await fetch("http://localhost:5000/story/create-story", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData, // Send the form data including the image file
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log("Story created successfully: ", result);
+        navigate("/story-preview", { state: { storyId: result.storyId } });
+      } else {
+        console.error("Error creating story: ", result.message);
+      }
+    } catch (error) {
+      console.error("Error: ", error);
+    }
+
+    console.log("Story Data:", { title, synopsis, tags, selectedGenres });
+  };
+
   const filteredGenres = genres.filter((g) =>
     g.toLowerCase().startsWith(genreInput.toLowerCase())
   );
@@ -53,7 +105,7 @@ const NewSoloStory = () => {
   return (
     <MasterPage>
       <div className="new-solo-story">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSave}>
           <div className="form-container-story">
             <div className="form-left-story">
               <div className="cover-image-group-story">
@@ -61,6 +113,7 @@ const NewSoloStory = () => {
                   <img
                     src={URL.createObjectURL(coverImage)}
                     alt="Cover"
+                    onChange={handleImageUpload}
                     className="image-preview-story"
                   />
                 ) : (

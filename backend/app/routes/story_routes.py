@@ -35,7 +35,7 @@ def create_story():
         title = request.form.get('title')
         synopsis = request.form.get('synopsis')
         tags = request.form.get('tags').split(',')  # Split comma-separated string back to list
-        selected_genres = request.form.get('genres').split(',')
+        selected_genres = request.form.get('selectedGenres').split(',')
 
         if not title or not synopsis:
             return jsonify({"error": "Title and synopsis are required."}), 400
