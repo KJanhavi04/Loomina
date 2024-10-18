@@ -8,6 +8,7 @@ import UserProfile from './pages/UserProfile';
 import Dashboard from './pages/DashboardPage';
 import CreateSpark from './pages/CreateSpark';
 import CreateStory from './pages/CreateStory';
+import StoryPreviewPage from './pages/StoryPreviewPage';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/spark" element={<CreateSpark />} />
           <Route path="/create-spark" element={<CreateSpark />} />
           <Route path='/create-story' element={<CreateStory />} />
+          <Route path='/story-preview' element={<StoryPreviewPage />} />
         </Routes>
       </div>
     </Router>

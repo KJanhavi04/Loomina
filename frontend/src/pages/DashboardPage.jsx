@@ -76,6 +76,7 @@ const Dashboard = () => {
   };
 
   const handleCreateSpark = async () => {
+
     if (!sparkFormData.title || !genres.length) {
       alert("Title and at least one Genre are required.");
       return;
@@ -90,7 +91,7 @@ const Dashboard = () => {
         },
         body: JSON.stringify({
           threadTitle: sparkFormData.title,
-          genre: genres,
+          genre: genres,                            
           timestamp: new Date().toISOString(),
           prompt: sparkFormData.prompt,
         }),
@@ -99,8 +100,12 @@ const Dashboard = () => {
       const result = await response.json();
       if (response.ok) {
         console.log('Thread created successfully:', result);
+        console.log(result)
+        
         closeModal();
-        navigate('/create-spark');
+        // navigate('/create-spark', {threadId: result.threadId});
+        navigate('/create-spark', { state: { threadId: result.threadId } });
+        // navigate('/create-spark', { state: { threadId: "670cfeb6205d114ca5d2c27d" } });
       } else {
         console.error('Error creating thread:', result.message);
       }

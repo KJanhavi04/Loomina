@@ -1,109 +1,133 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, send_file
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from ..models.story import Story
-from ..models.user import User
-from mongoengine import DoesNotExist, ValidationError
+from app.models.user import User
+from app.models.story import Story
+from gridfs import GridFS
 from datetime import datetime
+from config import Config
+from mongoengine import connect
+import mongoengine
+from bson import ObjectId
 
 story_bp = Blueprint('story', __name__)
 
-# @story_bp.route('/create-story', methods=['POST'])
-# @jwt_required()
-# def create_story():
-#     try:
-#         # Check if the request contains JSON data
-#         if not request.is_json:
-#             return jsonify({"error": "Invalid input, expected JSON format."}), 400
-
-#         data = request.json
-#         print("Received data:", data)  # Log incoming data for debugging
-
-#         # Validate required fields
-#         required_fields = ['title', 'synopsis', 'tag']  # Expecting 'tags' here
-#         for field in required_fields:
-#             if field not in data:
-#                 return jsonify({"error": f"Missing required field: {field}"}), 400
-
-#         # Get the current user
-#         user_id = get_jwt_identity()
-#         user = User.objects(id=user_id).first()
-#         if not user:
-#             return jsonify({"error": "User not found."}), 404
-
-#         # Create the new story with tags
-#         new_story = Story(
-#             title=data['title'],
-#             synopsis=data['synopsis'],
-#             tags=data.get('tag', []),  # Get tags from request
-#             genre= [],
-#             userId=user,
-#             creationTime=datetime.utcnow(),
-#             coverImage=data.get('coverImage', ''),  # Optional cover image
-#             numberOfChapters=0,
-#             numberOfLikes=0,
-#             likedBy=[]
-#         )
-#         new_story.save()
-
-#         new_story.update(storyId=str(new_story.id))
-
-
-#         return jsonify({"message": "Story created successfully!", "story": new_story.to_json()}), 201
-
-#     except ValidationError as e:
-#         return jsonify({"error": str(e)}), 400
-#     except Exception as e:
-#         return jsonify({"error": "An error occurred while creating the story."}), 500
+# Connect to MongoDB using settings from Config
+connect(**Config.MONGODB_SETTINGS)  # Connects using the settings provided
 
 @story_bp.route('/create-story', methods=['POST'])
 @jwt_required()
 def create_story():
     try:
-        # Handle form data from request
-        title = request.form.get('title')
-        synopsis = request.form.get('synopsis')
-        tags = request.form.get('tags')
-        genres = request.form.get('genres')
-        cover_image = request.files.get('coverImage')
+        # Get the pymongo database instance from mongoengine
+        db = mongoengine.connection.get_db()
 
-        # Convert tags and genres from JSON string to list
-        tags = json.loads(tags) if tags else []
-        genres = json.loads(genres) if genres else []
+        # Initialize GridFS with the actual database object
+        fs = GridFS(db)
 
-        # Get the current user
+        # Get user identity
         user_id = get_jwt_identity()
         user = User.objects(id=user_id).first()
+
         if not user:
             return jsonify({"error": "User not found."}), 404
 
-        # Handle cover image (if provided)
-        cover_image_url = ''
-        if cover_image:
-            # You would typically save the file to a static folder or cloud storage
-            # and store the file path/URL in the database.
-            cover_image_url = cover_image.filename  # Example: Save this file or URL in the database
+        # Extract other data (title, synopsis, etc.) from request.form
+        title = request.form.get('title')
+        synopsis = request.form.get('synopsis')
+        tags = request.form.get('tags').split(',')  # Split comma-separated string back to list
+        selected_genres = request.form.get('genres').split(',')
 
-        # Create the new story with tags and genres
-        new_story = Story(
+        if not title or not synopsis:
+            return jsonify({"error": "Title and synopsis are required."}), 400
+
+        # Create the story object without saving it yet
+        story = Story(
+            userId=user,
             title=title,
             synopsis=synopsis,
             tags=tags,
-            genres=genres,
-            userId=user,
-            creationTime=datetime.utcnow(),
-            coverImage=cover_image_url,  # Use the file name or URL
-            numberOfChapters=0,
-            numberOfLikes=0,
-            likedBy=[]
+            genre=selected_genres,
+            creationTime=datetime.now()
         )
-        new_story.save()
+        
+        # Save the story to generate the story ID
+        story.save()
 
-        # Update the storyId
-        new_story.update(storyId=str(new_story.id))
+        # Retrieve the file from the form data
+        file = request.files.get('coverImage')
+        if not file or file.filename == '':
+            return jsonify({"error": "No selected image"}), 400
 
-        return jsonify({"message": "Story created successfully!", "story": new_story.to_json()}), 201
+        # Use the story ID as the filename when saving to GridFS
+        file_id = fs.put(file, filename=str(story.id))  # Set filename to story ID
 
-    except ValidationError as e:
-        return jsonify({"error": str(e)}), 400
+        # Update the story with the coverImage GridFS file ID
+        story.update(coverImage=file_id, storyId=str(story.id))
+
+        return jsonify({"message": "Story created successfully!", "storyId": str(story.id)}), 201
+
     except Exception as e:
+        print(f"Error: {str(e)}")
         return jsonify({"error": "An error occurred while creating the story."}), 500
+
+
+
+@story_bp.route('/<storyId>', methods=['GET'])
+@jwt_required()
+def get_story(storyId):
+    try:
+        # Find the story by ID
+        story = Story.objects(id=storyId).first()
+
+        if not story:
+            return jsonify({"error": "Story not found"}), 404
+        
+
+        # Fetch the cover image from GridFS
+        db = mongoengine.connection.get_db()
+        fs = GridFS(db)
+        cover_image_file = fs.get(story.coverImage) if story.coverImage else None
+        cover_image_url = f'http://localhost:5000/story/cover-image/{story.coverImage}' if cover_image_file else None
+
+        # Serialize the story details
+        story_data = {
+            "title": story.title,
+            "synopsis": story.synopsis,
+            "tags": story.tags,
+            "genre": story.genre,
+            "creationTime": story.creationTime,
+            "coverImageUrl": cover_image_url,  # Pass the image URL to frontend
+            "numberOfChapters": story.numberOfChapters,
+            "numberOfLikes": story.numberOfLikes,
+            "likedBy": [str(user.id) for user in story.likedBy],
+        }
+
+        return jsonify(story_data), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@story_bp.route('/cover-image/<image_id>', methods=['GET'])
+def get_cover_image(image_id):
+    try:
+        # Get the pymongo database instance from mongoengine
+        db = mongoengine.connection.get_db()
+        fs = GridFS(db)
+
+        # Find the image in GridFS
+        file = fs.get(ObjectId(image_id))
+
+        if not file:
+            print('lol')
+            return jsonify({"error": "Image not found"}), 404
+                
+        # Ensure that we have a valid mimetype. If not, set a default value.
+        mimetype = file.content_type if file.content_type else 'application/octet-stream'
+
+        # Return the image as a response with the specified mimetype
+        return send_file(file, mimetype=mimetype)
+
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500

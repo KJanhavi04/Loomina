@@ -1,15 +1,16 @@
-from mongoengine import Document, StringField, DateTimeField, IntField, ListField, ReferenceField
+from mongoengine import Document, StringField, DateTimeField, ListField, ReferenceField, IntField, ObjectIdField
+from bson import ObjectId  # This is required to handle ObjectIds in MongoDB
 from .user import User
 
 class Story(Document):
     storyId = StringField(unique=True)
+    userId = ReferenceField(User, required=True)
     title = StringField(required=True)
     synopsis = StringField(required=True)
+    genre = ListField(StringField(), required=True)
+    tags = ListField(StringField(), required=True)
     creationTime = DateTimeField(required=True)
-    userId = ReferenceField(User, required=True)
-    genre = ListField(StringField(), default=[])  # Genre remains but used on another page
-    tags = ListField(StringField(), default=[])   # New field for tags
-    coverImage = StringField(default='')          # Optional field
-    numberOfChapters = IntField(default=0)
-    numberOfLikes = IntField(default=0)
-    likedBy = ListField(ReferenceField(User), default=[])
+    coverImage = ObjectIdField(required=False)  # Changed to ObjectIdField to store GridFS file_id
+    numberOfChapters = IntField(default=0)  # Changed to IntField
+    numberOfLikes = IntField(default=0)  # Changed to IntField
+    likedBy = ListField(ReferenceField(User))
