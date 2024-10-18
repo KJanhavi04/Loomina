@@ -12,6 +12,7 @@ def get_user():
     user = User.objects(id=user_id).first()
     if user:
         user_data = {
+            'userId': user.userId,
             'username': user.username,
             'email': user.email,
             'readingList': [

@@ -19,6 +19,7 @@ const App = () => {
           <Route path="/" element={<LoginPage />} />
           <Route path="/user" element={<UserProfile />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/spark" element={<CreateSpark />} />
           <Route path="/create-spark" element={<CreateSpark />} />
           <Route path='/create-story' element={<CreateStory />} />
           <Route path='/story-preview' element={<StoryPreviewPage />} />
