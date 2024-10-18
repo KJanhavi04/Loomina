@@ -33,6 +33,11 @@ const Sidebar = () => {
     setIsStoriesOpen(!isStoriesOpen);
   };
 
+  const handleCardClick = (path) => {
+    // Replace with actual navigation logic
+    window.location.href = path;
+  };
+
   return (
     <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
       <div className="sidebar-header" onClick={toggleSidebar}>
@@ -45,10 +50,12 @@ const Sidebar = () => {
           <FaPlus className="icon" />
           {!isCollapsed && <span>Create</span>}
         </li>
-        
-        <li className="menu-item">
+
+        <li className="menu-item" onClick={() => handleCardClick('/')}>
           <FaHome className="icon" />
-          {!isCollapsed && <span>Dashboard</span>}
+         
+            {!isCollapsed && <span>Dashboard</span>}
+
         </li>
 
         <li className="menu-item">
