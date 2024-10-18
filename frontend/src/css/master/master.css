@@ -1,5 +1,6 @@
 .master-page {
     display: flex;
+    background: #000814;
   }
   
   .main-content {
@@ -11,7 +12,7 @@
   
   .content-area {
     /* padding: 20px; */
-    background-color: #f0f4f8;
+    background-color: #000814;
     height: 100%;
     /* height: calc(100vh - 60px); Adjust based on header height */
   }

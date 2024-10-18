@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import '../css/StoryPreviewPage.css';
 
 const StoryPreviewPage = () => {
   const [storyDetails, setStoryDetails] = useState(null);

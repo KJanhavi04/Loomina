@@ -1,36 +1,86 @@
+/* Header Container */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background-color: #000814;
-    border-bottom: 2px solid #2d3748;
-    color: #ddd;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #000814;
+  border-bottom: 2px solid #2d3748;
+  color: #ddd;
+}
+
+/* Search Section */
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-icon {
+  color: #cbd5e0;
+  position: absolute;
+  left: 10px;
+  font-size: 16px;
+}
+
+.search {
+  width: 300px;
+  padding: 8px 12px 8px 35px; /* Padding adjusted for icon */
+  border-radius: 6px;
+  border-bottom: 2px solid #cbd5e0;
+  background-color: #2d3748;
+  color: #fff;
+}
+
+.search::placeholder {
+  color: #cbd5e0;
+}
+
+/* Profile Section */
+.profile {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.profile-pic {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #ddd;
+}
+
+.username {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Log Out Container */
+.logout-container {
+  display: flex;
+  align-items: center;
   
-  .search {
-    width: 300px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    border-bottom: 2px solid #cbd5e0;
-    background-color: #2d3748;
-  }
-  
-  .profile {
-    display: flex;
-    align-items: center;
-  }
-  
-  .profile-pic {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    margin-right: 10px;
-    background-color: #ddd;
-  }
-  
-  .username {
-    font-size: 16px;
-    font-weight: 500;
-  }
-  
+  position: absolute;
+  top: 30px; /*Positioning below the username  */
+  right: 0;
+  color: #fff;
+  cursor: pointer;
+  position: absolute;
+  background-color: #001c34;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.logout-icon {
+  margin-right: 10px;
+}
+
+.logout-container:hover {
+  background-color: #4a5568;
+}
