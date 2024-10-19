@@ -9,7 +9,7 @@ const Footer = () => {
           <h2>Loomina✨- Weave your imagination with AI</h2>
         </div>
         <div className="footer-right">
-          <p><i className="fa fa-map-marker"></i> VIT, mumbai chya pori!</p>
+          <p><i className="fa fa-map-marker"></i> VIT, Mumbai</p>
           <p><i className="fa fa-envelope"></i> shrujan@gmail.com</p>
         </div>
       </div>

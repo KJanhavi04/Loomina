@@ -1,6 +1,6 @@
 .sidebar {
   width: 250px;
-  background-color: #000814;
+  background-color: #191a2a;
   color: white;
   height: 100vh;
   display: flex;
@@ -55,7 +55,8 @@
 }
 
 .menu-item:hover {
-  background-color: #001c34;
+  /* background-color: #001c34; */
+  background-color: #000814;
   transform: translateX(10px);
 }
 

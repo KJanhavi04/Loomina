@@ -7,6 +7,8 @@ import {
   FaCog,
   FaBook,
   FaPlus,
+  FaHistory,
+  FaBookMedical,
 } from "react-icons/fa";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
@@ -56,6 +58,11 @@ const Sidebar = () => {
          
             {!isCollapsed && <span>Dashboard</span>}
 
+        </li>
+
+        <li className="menu-item">
+          <FaBookMedical className="icon" />
+          {!isCollapsed && <span>My Story</span>}
         </li>
 
         <li className="menu-item">

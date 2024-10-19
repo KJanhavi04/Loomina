@@ -1,5 +1,5 @@
 .footer {
-    background-color: #000814;
+    background-color: #191a2a;
     color: white;
     padding: 20px 20px;
     text-align: left;
@@ -11,7 +11,7 @@
   }
   
   .footer-content {
-    display: flex;
+    display: flex; 
     justify-content: space-between;
     width: 100%;
     max-width: 1200px;
