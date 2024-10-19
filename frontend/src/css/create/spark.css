@@ -8,8 +8,37 @@
   position: relative;
   border: 1px solid aliceblue;
   border-radius: 10px;
+  overflow-y: auto; /* Allow vertical scrolling */
 }
 
+/* Scrollbar styling for Webkit browsers (Chrome, Safari) */
+.sparks-container::-webkit-scrollbar {
+  width: 8px; /* Width of the vertical scrollbar */
+}
+
+.sparks-container::-webkit-scrollbar-thumb {
+  background-color: #2d3748; /* Dark background for the scrollbar thumb */
+  border-radius: 10px; /* Circular radius for the thumb */
+}
+
+.sparks-container::-webkit-scrollbar-track {
+  background-color: #000814; /* Background for the scrollbar track */
+  border-radius: 10px; /* Optional: Match the track to the thumb */
+}
+
+/* Scrollbar styling for Firefox */
+.sparks-container {
+  scrollbar-width: thin; /* Makes the scrollbar thin */
+  scrollbar-color: #2d3748 #000814; /* Thumb color and track color */
+}
+
+/* Additional Styling for Circular Radius (Firefox) */
+.sparks-container::-moz-scrollbar-thumb {
+  background-color: #2d3748; /* Dark background for the scrollbar thumb */
+  border-radius: 10px; /* Circular radius for the thumb */
+}
+
+/* Original styles */
 .sparks-container .spark-header {
   display: flex;
   align-items: center;
@@ -77,12 +106,13 @@
 .sparks-container .spark-textarea.posted {
   background-color: #000814;
   padding-bottom: 15px;
+  
 }
 
 .sparks-container .spark-textarea textarea {
   width: 100%;
   height: 150px;
-  padding: 10px;
+  padding: 15px;
   border-bottom: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
@@ -97,6 +127,7 @@
   color: aliceblue;
   border: 1px solid aliceblue;
   transition: ease-out 0.3s;
+  text-align: justify;
 }
 
 .sparks-container .spark-textarea:not(:first-of-type)::before {
@@ -161,7 +192,6 @@
   padding: 8px;
   display: flex;
   align-items: center;
-  /* gap: 5px; */
   margin-bottom: 25px;
 }
 
