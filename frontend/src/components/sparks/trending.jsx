@@ -14,8 +14,8 @@ const Trending = ({ items }) => {
             </div>
           </div>
           <p className="spark-summary">
-            {item.summary.length > 500
-              ? item.summary.substring(0, 100) + "..."
+            {item.summary.length > 200
+              ? item.summary.substring(0, 180) + "..."
               : item.summary}
             <span className="show-more"> Show more</span>
           </p>

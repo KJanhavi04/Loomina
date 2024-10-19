@@ -1,0 +1,19 @@
+.story-page {
+    padding: 20px; /* Padding around the page */
+    /* background-color: #f9f9f9; Light background color */
+  }
+  
+  .story-page-title {
+    text-align: center; /* Center align the title */
+    font-size: 2em; /* Title font size */
+    margin-bottom: 20px; /* Margin below the title */
+  }
+  
+  .story-page-cards {
+    display: flex; /* Flexbox for responsive layout */
+    flex-wrap: wrap; /* Wrap cards to the next line */
+    justify-content: flex-start; /* Center align cards */
+    margin: 20px;
+    gap: 50px; /* Space between cards */
+  }
+  

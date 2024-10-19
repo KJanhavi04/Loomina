@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../css/master/Sidebar.css";
+import CreateModal from "../modals/createModal";
 import {
   FaHome,
   FaBookmark,
@@ -40,6 +41,12 @@ const Sidebar = () => {
     window.location.href = path;
   };
 
+  const [open, setOpen] = useState(false);
+
+  const handleClickModal = () => {
+    setOpen(!open);
+  };
+
   return (
     <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
       <div className="sidebar-header" onClick={toggleSidebar}>
@@ -48,9 +55,10 @@ const Sidebar = () => {
       </div>
 
       <ul className="menu">
-        <li className="menu-item">
+        <li className="menu-item" onClick={handleClickModal}>
           <FaPlus className="icon" />
           {!isCollapsed && <span>Create</span>}
+          {open && <CreateModal onClose={handleClickModal} />}
         </li>
 
         <li className="menu-item" onClick={() => handleCardClick('/')}>
@@ -60,12 +68,12 @@ const Sidebar = () => {
 
         </li>
 
-        <li className="menu-item">
+        <li className="menu-item"  onClick={() => handleCardClick('/story-page')}>
           <FaBookMedical className="icon" />
           {!isCollapsed && <span>My Story</span>}
         </li>
 
-        <li className="menu-item">
+        <li className="menu-item" onClick={() => handleCardClick('/user')}>
           <FaUserAlt className="icon" />
           {!isCollapsed && <span>Profile</span>}
         </li>

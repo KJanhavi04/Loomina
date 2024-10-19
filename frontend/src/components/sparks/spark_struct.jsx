@@ -1,42 +1,52 @@
-import React from 'react';
-import { FaHeart, FaComment, FaBookmark, FaEllipsisH } from 'react-icons/fa'; // Import necessary icons
-import '../../css/sparks/spark_struct.css'; // Import the CSS file
-// import React from 'react';
-// import { FaHeart, FaComment, FaBookmark, FaEllipsisH } from 'react-icons/fa';
-// import './spark_struct.css';
+import React from "react";
+import { FaHeart, FaComment, FaBookmark, FaEllipsisH } from "react-icons/fa"; // Import necessary icons
+import "../../css/sparks/spark_struct.css"; // Import the CSS file
 
-
-const SparkStruct = () => {
-    return (
-      <div className="spark-container">
-        {/* Header Section */}
-        <div className="spark-header">
-          <div className="profile-pic"></div>
-          <span className="spark-title">Story Title</span>
-          <FaEllipsisH className="options-icon" />
+const SparkStruct = ({
+  profilePic,
+  title,
+  content,
+  likes,
+  comments,
+  bookmarks,
+}) => {
+  return (
+    <div className="spark-container">
+      {/* Header Section */}
+      <div className="spark-header">
+        <div className="profile-pic">
+          <img src={profilePic} alt="Profile" className="profile-img" />
         </div>
+        <span className="spark-title">{title}</span>
+        <FaEllipsisH className="options-icon" />
+      </div>
 
-          <div className="spark-card">
-            <div className="spark-content">
-              <p>
-                "Once upon a time in a faraway land, there lived a young prince who longed to explore the world beyond his castle walls. He dreamed of discovering new places, meeting strange and wonderful people, and uncovering the mysteries that the kingdom had hidden for centuries. The prince loved to read old maps and listen to stories from travelers who passed by the kingdom's gates, feeding his curiosity about the world outside."
-              </p>
-            </div>
-          </div>
-          
-        
-  
-        {/* Horizontal Divider */}
-        <hr className="divider" />
-  
-        {/* Footer Icons Section */}
-        <div className="spark-footer">
-          <FaHeart className="footer-icon"  />
-          <FaComment className="footer-icon" />
-          <FaBookmark className="footer-icon" />
+      {/* Content Section */}
+      <div className="spark-card">
+        <div className="spark-content">
+          <p>{content}</p>
         </div>
       </div>
-    );
-  };
-  
-  export default SparkStruct;
+
+      {/* Horizontal Divider */}
+      <hr className="divider" />
+      {/* Footer Icons Section */}
+      <div className="spark-footer">
+        <div className="footer-item">
+          <FaHeart className="footer-icon" />
+          <span className="footer-count">{likes}</span>
+        </div>
+        <div className="footer-item">
+          <FaComment className="footer-icon" />
+          <span className="footer-count">{comments}</span>
+        </div>
+        <div className="footer-item">
+          <FaBookmark className="footer-icon" />
+          <span className="footer-count">{bookmarks}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SparkStruct;

@@ -37,7 +37,7 @@ const Explore = ({ closeModal }) => {
           <div className="content-column"></div>
           <div className="content-column"></div>
           <div className="content-column"></div> */}
-          <SparkStruct></SparkStruct>
+          {/* <SparkStruct></SparkStruct> */}
         </div>
 
        
