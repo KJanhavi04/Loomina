@@ -37,12 +37,12 @@ def add_spark():
          noOfLikes=0,
          noOfComments=0,
          likedBy=[],
-         prevSparkId='',
-         isStart='true'
+         prevSparkId=data['prevSparkId'],
+         isStart= 'False' if data['prevSparkId'] else 'True'
          )
         spark.save()
         spark.update(sparkId=str(spark.id))
-        return jsonify({"message": "Spark added successfully."}), 201
+        return jsonify({"message": "Spark added successfully.", "sparkId" : str(spark.id)}), 201
     
     except ValidationError as e:
         return jsonify({"error": str(e)}), 400

@@ -4,17 +4,40 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can add authentication logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
+
+    try {
+      const response = await fetch('http://localhost:5000/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Login successful:', data);
+        localStorage.setItem('token', data.token); // Store JWT token
+        // Navigate to another page or show success message
+        navigate('/user'); // Example: Redirect to a dashboard
+      } else {
+        console.log('Login failed:', data.message);
+        // Show an error message
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
   };
 
+  
+
   const handleSignUpClick = () => {
-    navigate('/signup'); // Navigate to the signup page
+    navigate('/signup');
   };
 
   return (
@@ -46,4 +69,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

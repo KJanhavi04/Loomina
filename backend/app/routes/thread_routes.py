@@ -53,6 +53,7 @@ def create_thread():
 def get_thread(thread_id):
     try:
         thread = Thread.objects.get(threadId=thread_id)
-        return jsonify(thread.to_json()), 200
+        print(thread.threadTitle)
+        return jsonify(thread = thread.to_json(), threadTitle = thread.threadTitle), 200
     except DoesNotExist:
         return jsonify({"error": "Thread not found."}), 404
