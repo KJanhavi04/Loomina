@@ -21,42 +21,42 @@ const Dashboard = () => {
     {
       authorPic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzOFaaYy7ZgMH3DY7Aq8_BKaUAH5khUl-ubA&s",
       authorName: "Namita Warang",
-      summary: "This is an easy small story in English. The moral of this story is no matter how great one becomes, one should never forget one's roots. Just like the mouse girl who, despite being transformed into a human girl, refused to marry the great forces of nature and finally settled for a mouse, a creature who belonged to her roots.",
+      summary: "In a dystopian future where the totalitarian regime of Big Brother watches every move, Winston Smith works at the Ministry of Truth, altering historical records to fit the party's narrative. As he secretly yearns for rebellion and truth, he embarks on a forbidden love affair, discovering the perilous cost of individuality in a world where freedom is an illusion.",
     },
     {
       authorPic: "https://images.inc.com/uploaded_files/image/1920x1080/getty_516137066_2000179720009280633_314131.jpg",
       authorName: "Shruti Patil",
-      summary: "The moral of “The Beauty and the Beast” is that inner traits, such as kindness, should be valued over outside qualities such as wit and appearance. This moral is taught by showing how Beauty admired the Beast's intrinsic qualities and fell in love with him despite his external characteristics.",
+      summary: "Set in the Roaring Twenties, this novel chronicles the life of the mysterious Jay Gatsby and his obsessive love for the beautiful Daisy Buchanan. Through the eyes of narrator Nick Carraway, we explore themes of wealth, love, and the elusive American Dream as Gatsby's extravagant parties mask a deeper longing for connection and acceptance.",
     },
   ];
 
   // Updated thread data with valid story titles
   const threads = [
     {
-      title: "The Enchanted Forest",
-      profilePic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNQ6V81uURGlbHSJ5IWvuuhuES77P7Xu4oeQ&s",
+      title: "Solo Leveling",
+      profilePic: "https://qph.cf2.quoracdn.net/main-qimg-02d720cffa41ca9ede198aa8a2e603ba-lq",
       sparks: [
-        "Once upon a time, in an enchanted forest, there lived a young girl named Elara. She was known for her kindness and bravery. One day, she discovered a hidden path that led to a magical realm.",
-        "In this realm, Elara met mystical creatures who needed her help to save their home from an evil sorceress. With courage and determination, she embarked on a quest filled with challenges and adventures.",
-        "Through her journey, Elara learned valuable lessons about friendship, trust, and the power of believing in oneself."
+        "In a world plagued by monstrous creatures and the enigmatic dungeons they emerge from, hunters are humanity’s last line of defense. Jinwoo Sung, once known as the 'world's weakest hunter,' barely survives each harrowing encounter.",
+        "His life takes a dramatic turn when he stumbles into a double dungeon—a perilous realm where danger lurks at every corner. After a near-fatal battle, he is given a chance to become something greater through a mysterious system that allows him to level up his abilities in ways no one else can.",
+        "As he progresses, Jinwoo evolves from a frail fighter into an unstoppable force, attracting powerful allies and uncovering secrets that challenge the very fabric of their reality. With each dungeon he conquers, he not only seeks revenge against those who underestimated him but also confronts the dark powers threatening to engulf the world in chaos."
       ],
     },
     {
-      title: "The Quest for the Lost ",
+      title: "Tower of God ",
       profilePic: "https://i0.wp.com/grehlakshmi.com/wp-content/uploads/2022/08/resize-1656478623332995750wildanimalcartooncharacterintheforestscenefreevector.webp?fit=1200%2C675&ssl=1",
       sparks: [
-        "In a small village, tales of a lost treasure hidden in the mountains circulated for generations. A brave young boy named Leo decided to uncover the truth behind the legend.",
-        "With the guidance of an old map and the support of his friends, Leo set off on an adventure that tested their limits and forged unbreakable bonds.",
-        "Along the way, they faced treacherous paths and fierce creatures, but their unwavering spirit led them to uncover not just treasure but the true meaning of courage."
+        "In the mesmerizing universe of the Tower of God, the tower itself is a labyrinth of peril and wonder, where every floor holds unimaginable challenges and potential rewards. Bam, a boy raised in isolation, finds himself drawn into this towering structure in search of his dear friend, Rachel, who dreams of seeing the stars.",
+        "As he ascends the tower, Bam encounters a diverse array of characters, each with their own ambitions and secrets. He learns that the path to the top is fraught with treachery and conflict, where allies can quickly become foes. Alongside his companions, Bam must navigate complex trials that test not only his strength but also his morality.",
+        "With each floor, he uncovers layers of the tower's mysteries and the powerful beings that govern it, challenging everything he thought he knew about friendship, sacrifice, and the pursuit of one's desires."
       ],
     },
     {
-      title: "The Time Traveler's Dilemma",
+      title: "The Beginning After the End",
       profilePic: "https://cdn.firstcry.com/education/2022/08/12021320/The-Greedy-Dog-Story-With-Moral-For-Kids-696x476.jpg",
       sparks: [
-        "In a world where time travel was possible, a scientist named Dr. Amelia found a way to travel back in time to witness historical events.",
-        "However, her journey took an unexpected turn when she accidentally altered a crucial moment in history, leading to unforeseen consequences.",
-        "Now, Dr. Amelia must navigate through time, making difficult choices to restore the timeline while learning about the impact of her actions."
+        "After leading a life filled with battles and political intrigue, King Grey meets his demise, only to find himself reborn as Arthur Leywin in a fantastical realm brimming with magic and opportunity. This new life offers him a chance to start afresh, but the shadows of his past linger.",
+        "With the memories of his former self guiding him, Arthur embraces his new identity while striving to hone his innate magical abilities. As he grows stronger, he forms bonds with various companions, each bringing unique skills and perspectives that enrich his journey. However, as he delves deeper into the complexities of his new world, he discovers dark forces at play, threatening the peace he seeks.",
+        "With the wisdom of a king and the heart of a child, Arthur must navigate the intricacies of friendship, love, and betrayal while striving to protect his loved ones and unravel the mysteries behind his reincarnation, ultimately forging his own destiny in a world where danger lurks at every turn."
       ],
     },
     
@@ -96,17 +96,17 @@ const Dashboard = () => {
       {/* Bottom Section */}
       <div className="bottom-section">
         <SparkStruct
-          profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgeFtkA2Mjt77S9I8ybECREkcFshAnMmUtIA&s"
-          title="Alice in the Borderland"
-          content="In the story, King Bruce and Spider, we saw how strongly the spider was trying to attain his success. Seeing the spider’s bravery, King Bruce also got encouraged to take one more step forward to get his lost kingdom back. With this story, we have learned that we should try, try, and try hard to achieve our dreams till we succeed."
+          profilePic="https://www.otonity.com/uploads/large/24171aad4a34bdd71bae236c609ca213.jpg"
+          title="Omniscient Reader's Viewpoint"
+          content="In a world governed by a mysterious narrative, Kim Dok-ja, an ordinary office worker, finds himself thrust into a survival game that resembles the web novel he has been reading for years. As the only person who possesses knowledge of the story's events and characters, he realizes that he has the unique ability to manipulate the narrative to his advantage. However, he quickly discovers that the stakes are higher than he ever imagined, and the line between fiction and reality begins to blur. Navigating through perilous situations, he forms alliances with fellow characters, each with their own agendas and secrets. With each chapter, Dok-ja must confront formidable foes and make life-or-death decisions that could alter the course of the world. As he grapples with the moral implications of his actions, ORV delves into themes of agency, destiny, and the consequences of knowing one's fate, creating a gripping narrative that keeps readers on the edge of their seats."
           likes={120}
           comments={45}
           bookmarks={20}
         />
         <SparkStruct
-          profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS72pwMkVvVObNijGWCo-0HzZ1P1M0s28FrBQ&s"
-          title="Ali Baba and the Forty Thieves"
-          content="This is an amazing short story to read in English. The moral lesson to be learnt here is that we should never bow down to greed. Greed should never be allowed to rule our lives. At some point during the novel, every one of the characters feels guilty about being selfish."
+          profilePic="https://i.pinimg.com/564x/fe/37/26/fe3726460ac255f83c01af115b657266.jpg"
+          title="Trash of the Count's Family"
+          content="Cale Henituse, an ordinary young man from a noble family, finds his life turned upside down when he is suddenly transported into a fantasy world reminiscent of a novel he read in his previous life. In this new reality, he discovers that he has been given the identity of a character often dismissed as a 'trash' by others. Instead of succumbing to his fate, Cale embraces his role and cleverly manipulates the circumstances around him to avoid the dire prophecies laid out in the story. As he navigates the intricacies of noble society and encounters powerful figures, he uses his cunning and resourcefulness to forge alliances and outsmart his enemies. With a witty sense of humor and an engaging cast of characters, TCF explores the themes of self-discovery, resilience, and the importance of choosing one's own path, as Cale learns that he can redefine his destiny while also protecting those he cares about in a world filled with danger and intrigue."
           likes={10}
           comments={5}
           bookmarks={2}

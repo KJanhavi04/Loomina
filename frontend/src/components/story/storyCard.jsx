@@ -7,7 +7,7 @@ const StoryCard = ({ coverImage, title, synopsis, storyId }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const navigate = useNavigate();
 
-  const limitedSynopsis = synopsis.split(' ').slice(0, 100).join(' ');
+  const limitedSynopsis = synopsis.split(' ').slice(0, 60).join(' ');
 
   const handleToggle = () => {
     setIsExpanded(!isExpanded);
