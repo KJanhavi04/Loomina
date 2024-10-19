@@ -42,8 +42,6 @@ def add_spark():
          )
         spark.save()
         spark.update(sparkId=str(spark.id))
-
-        
         return jsonify({"message": "Spark added successfully."}), 201
     
     except ValidationError as e:

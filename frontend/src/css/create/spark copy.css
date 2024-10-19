@@ -1,0 +1,245 @@
+.spark-container {
+  padding: 20px;
+  background-color: #000814;
+  width: 1000px;
+  margin-left: 250px;
+}
+
+.spark-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.spark-header-title {
+  flex-grow: 1;
+  border: none; /* Remove all borders */
+  border-bottom: 1px solid #ccc; /* Add bottom border only */
+  padding: 8px;
+  outline: none; /* Remove default outline */
+  background-color: transparent; /* Make background transparent */
+  transition: border-bottom-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.spark-header-title.editable {
+  border-bottom-color: #007bff; /* Change border color when editable */
+}
+
+.spark-header-title:not(.editable) {
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.spark-textarea-cancel {
+  position: absolute;
+  top: 10px; /* Adjust to position inside the textarea */
+  right: 10px; /* Adjust to position inside the textarea */
+  color: #ff4b5d; /* Text color for the cancel button */
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.spark-textarea-edit {
+  position: absolute;
+  top: 10px; /* Adjust positioning as necessary */
+  right: 10px;
+  color: #ff4b5d; /* Color for edit icon */
+  cursor: pointer;
+}
+
+.spark-header-icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: #ddd;
+}
+
+.spark-textarea-container {
+  position: relative; /* Needed for absolute positioning of the line */
+  margin-bottom: 15px;
+}
+
+.spark-textarea {
+  position: relative;
+  padding-left: 20px; /* Space for the line on the left */
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.spark-textarea.posted {
+  background-color: #a5bbdb; /* Darker background color for posted spark */
+}
+
+.spark-textarea textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #ddd;
+  resize: none;
+  box-sizing: border-box;
+  background-color: #2d3748;
+}
+
+.spark-textarea:not(:first-of-type)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: calc(100% + 15px); /* Adjust height to connect with the next textarea */
+  background-color: #ccc;
+}
+
+.spark-textarea:first-of-type::before {
+  display: none;
+}
+
+.spark-components {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  color: #ddd;
+}
+
+.spark-formatting {
+  display: flex;
+  gap: 15px;
+}
+
+.spark-formatting svg {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.spark-add-more {
+  background-color: #000814;
+  padding: 8px 12px;
+  border: 1px solid;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.spark-post {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background-color: #000814; /* Dark navy background for post button */
+  color: white;
+  border: 2px solid transparent; /* Initially transparent */
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.spark-post:hover {
+  border: 2px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+}
+
+.spark-posted-sections {
+  margin-top: 10px; /* Space between the posted section and textarea */
+}
+/* 
+.spark-actions {
+  display: flex;
+  justify-content: space-between;
+  color: #ddd; /* Adjust as needed 
+} */
+
+/* Additional styles for the actions section */
+.spark-actions {
+  display: flex;
+  justify-content: space-between; /* Space between the three sections */
+  margin-top: 10px;
+  color: #ddd; /* Text color */
+}
+
+.spark-action-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer; /* Pointer cursor for icons */
+  gap: 5px; /* Space between icon and text */
+}
+
+.spark-action-icon:hover {
+  opacity: 0.8; /* Slight hover effect */
+}
+/* =======================================
+ *
+ /
+
+ /* Make the Sparks and Threads horizontally scrollable */
+.bottom-section {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px; /* For space under the content */
+  scroll-behavior: smooth; /* Smooth scroll when buttons are clicked */
+  position: relative;
+}
+
+.bottom-box {
+  flex: 0 0 auto; /* Prevent flex from stretching the boxes */
+  width: 300px;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #1c1e2f;
+  color: white;
+  text-align: center;
+}
+
+.arrow-box {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  display: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.arrow-box.left {
+  left: 10px;
+}
+
+.arrow-box.right {
+  right: 10px;
+}
+
+.arrow-button {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 24px;
+}
+
+.bottom-section:hover .arrow-box {
+  display: flex; /* Show arrows only on hover */
+}
+
+.arrow-button:hover {
+  color: #ffdd57; /* Arrow color changes on hover */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 600px) {
+  .bottom-section {
+    gap: 10px;
+  }
+}

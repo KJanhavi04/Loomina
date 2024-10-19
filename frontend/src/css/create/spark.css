@@ -1,0 +1,211 @@
+.sparks-container {
+  padding: 20px;
+  background-color: #000814;
+  width: 1000px;
+  margin-left: 18%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  position: relative;
+  border: 1px solid aliceblue;
+  border-radius: 10px;
+}
+
+.sparks-container .spark-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  color: aliceblue;
+}
+
+.sparks-container .spark-header-title {
+  flex-grow: 1;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+  outline: none;
+  background-color: transparent;
+  transition: border-bottom-color 0.3s ease;
+}
+
+.sparks-container .spark-header-title.editable {
+  border-bottom-color: #007bff;
+}
+
+.sparks-container .spark-header-title:not(.editable) {
+  cursor: pointer;
+}
+
+.sparks-container .spark-textarea-cancel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ff4b5d;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.sparks-container .spark-textarea-edit {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ecff98;
+  cursor: pointer;
+}
+
+.sparks-container .spark-header-icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: #ddd;
+}
+
+.sparks-container .spark-textarea-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.sparks-container .spark-textarea {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.sparks-container .spark-textarea.posted {
+  background-color: #000814;
+  padding-bottom: 15px;
+}
+
+.sparks-container .spark-textarea textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #ddd;
+  resize: none;
+  box-sizing: border-box;
+  background-color: #2d3748;
+}
+
+.sparks-container .spark-textarea.posted textarea {
+  background-color: #1c1e2f;
+  color: aliceblue;
+  border: 1px solid aliceblue;
+  transition: ease-out 0.3s;
+}
+
+.sparks-container .spark-textarea:not(:first-of-type)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: calc(100% + 15px);
+  background-color: #ccc;
+}
+
+.sparks-container .spark-textarea:first-of-type::before {
+  display: none;
+}
+
+.sparks-container .spark-components {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  color: #ddd;
+}
+
+.sparks-container .spark-formatting {
+  display: flex;
+  gap: 15px;
+}
+
+.sparks-container .spark-formatting svg {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.sparks-container .spark-add-more {
+  background-color: #000814;
+  padding: 8px 12px;
+  border: 1px solid;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.sparks-container .spark-textarea {
+  position: relative;
+  margin-bottom: 15px;
+  padding-bottom: 50px;
+}
+
+.sparks-container .spark-post {
+  position: absolute;
+  right: 0px;
+  bottom: -25px;
+  background-color: #005401;
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  /* gap: 5px; */
+  margin-bottom: 25px;
+}
+
+.sparks-container .spark-post:hover {
+  border: 2px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+}
+
+.sparks-container .spark-posted-sections {
+  margin-top: 10px;
+}
+
+.sparks-container .spark-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-right: 20px;
+  color: hsl(0, 0%, 87%);
+  font-size: 15px;
+}
+
+.sparks-container .spark-action-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.sparks-container .spark-icon {
+  font-size: 20px;
+  color: #f0f8ff;
+}
+
+.sparks-container .spark-icon:hover {
+  opacity: 0.8;
+  color: #ff7a7a;
+}

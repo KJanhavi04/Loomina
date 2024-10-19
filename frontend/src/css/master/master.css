@@ -1,0 +1,19 @@
+.master-page {
+    display: flex;
+    background: #000814;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .content-area {
+    /* padding: 20px; */
+    background-color: #000814;
+    height: 100%;
+    /* height: calc(100vh - 60px); Adjust based on header height */
+  }
+  

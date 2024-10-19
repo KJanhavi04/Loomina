@@ -1,0 +1,169 @@
+/* final for signup bioth regsiter anf login */
+
+.title {
+  font-size: 36px;
+  margin: 20px 0;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.testimonial {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 50px;
+  height: fit-content;
+  
+}
+
+.testimonial-text {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+}
+
+.testimonial-author img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.author-details {
+  display: flex;
+  flex-direction: column;
+}
+.dots-container {
+  text-align: center; /* Center the dots below the testimonial */
+  margin-top: 20px; /* Add space above the dots */
+}
+
+.dot {
+  display: inline-block;
+  width: 12px; /* Dot width */
+  height: 12px; /* Dot height */
+  margin: 0 5px; /* Space between dots */
+  border-radius: 50%; /* Make it circular */
+  background-color: #ccc; /* Default dot color */
+  cursor: pointer; /* Change cursor to pointer */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for color change and size */
+}
+
+.dot.active {
+  background-color: #000814; /* Active dot color */
+  transform: scale(1.2); /* Scale up the active dot */
+}
+
+.outer-space {
+  padding: 100px;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+  background: linear-gradient(
+    135deg,
+    #000814,
+    #2d3748
+  ); /* Matching left side gradient */
+}
+
+.signup-wrapper {
+  display: flex;
+  background: aliceblue; /* Change background to white for the curved box */
+  border-radius: 20px; /* Curved corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  overflow: hidden; /* Ensure the content is within the rounded corners */
+  height: 80vh;
+}
+
+.left-section {
+  background: linear-gradient(135deg, #000814, #2d3748);
+  color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+}
+
+.right-section {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.toggle-buttons {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.toggle-buttons button {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-size: 16px;
+  transition: 0.3s;
+  color: #000814;
+  
+}
+
+.toggle-buttons .active {
+  background-color: #000814;
+  border-radius: 10px;
+  color: white;
+ 
+}
+
+.toggle-buttons:hover{
+    background-color: #00081415;
+    border-radius: 10px;
+    
+}
+
+.signup-form input,
+.signup-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #000814;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: #000814; /* Button background color */
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #c0b4b1; /* Button hover color */
+}
+
+.login-prompt {
+  text-align: center;
+  color: #002050;
+  margin-top: 20px;
+}
+
+.login-prompt a {
+  color: #000814; /* Change link color to match the design */
+  text-decoration: none;
+}

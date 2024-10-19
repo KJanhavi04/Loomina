@@ -1,0 +1,138 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #000814;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+/* Image Carousel */
+.image-carousel {
+  position: relative;
+  flex: 2;
+  text-align: center;
+}
+
+.full-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.dot {
+  height: 8px;
+  width: 8px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #fff;
+}
+
+/* Sparks Heading */
+.middle-section {
+  text-align: center;
+}
+
+.sparks-heading h3 {
+  color: white;
+  font-size: 24px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid white;
+}
+
+/* Bottom Section */
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: nowrap; /* Allow the items to wrap */
+}
+
+.bottom-box {
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #1c1e2f;
+  color: white;
+  flex: 1;
+  text-align: center;
+  width: 100%;
+}
+
+/* Arrow Button */
+.arrow-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.arrow-button {
+  background-color: #1c1e2f;
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 15px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.arrow-button:hover {
+  background-color: white;
+  color: #1c1e2f;
+}
+
+/* Media Queries */
+
+/* Medium Devices (Tablets) */
+@media (min-width: 600px) and (max-width: 900px) {
+  .bottom-section {
+    flex-direction: row;
+  }
+
+  .full-image {
+    height: 250px;
+  }
+}
+
+/* Large Devices (Desktops) */
+@media (min-width: 900px) {
+  .bottom-box {
+    width: 100%; /* Full width for larger screens */
+  }
+}
+
+/* Small Devices (Mobile) */
+@media (max-width: 600px) {
+  .top-section {
+    flex-direction: column;
+  }
+
+  .bottom-section {
+    flex-direction: column;
+  }
+
+  .full-image {
+    height: 200px; /* Smaller height for mobile */
+  }
+}
