@@ -10,22 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD:loomina_frontend/package.json
-    "@chakra-ui/react": "^2.8.2",
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
-    "axios": "^1.7.4",
-    "cors": "^2.8.5",
-    "framer-motion": "^11.3.29",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "tailwindcss": "^3.4.13"
-=======
     "quill": "^2.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0"
->>>>>>> d676b9dce2375893b371baf7852e7dbab49b2412:frontend/package.json
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
@@ -40,11 +28,7 @@
     "globals": "^15.9.0",
     "postcss": "^8.4.41",
     "react-router-dom": "^6.26.1",
-<<<<<<< HEAD:loomina_frontend/package.json
-    "vite": "^5.4.8"
-=======
     "tailwindcss": "^3.4.10",
-    "vite": "^5.4.1"
->>>>>>> d676b9dce2375893b371baf7852e7dbab49b2412:frontend/package.json
+    "vite": "^5.4.9"
   }
 }

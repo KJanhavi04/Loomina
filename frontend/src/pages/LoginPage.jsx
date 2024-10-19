@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
  
-<<<<<<< HEAD:loomina_frontend/src/pages/LoginPage.jsx
-const LoginPage = () => {
-=======
 const Login = () => {
->>>>>>> d676b9dce2375893b371baf7852e7dbab49b2412:frontend/src/pages/LoginPage.jsx
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();

@@ -5,15 +5,10 @@ const UserProfile = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-<<<<<<< HEAD:loomina_frontend/src/pages/UserProfile.jsx
-      try {
-        const token = localStorage.getItem('token');
-=======
       console.log("HELLO!");
       try {
         const token = localStorage.getItem('token');
         console.log(token);
->>>>>>> d676b9dce2375893b371baf7852e7dbab49b2412:frontend/src/pages/UserProfile.jsx
         const response = await fetch('http://localhost:5000/user/user', {
           method: 'GET',
           headers: {
@@ -30,10 +25,6 @@ const UserProfile = () => {
         }
       } catch (error) {
         console.error('Error fetching user details:', error);
-<<<<<<< HEAD:loomina_frontend/src/pages/UserProfile.jsx
-=======
-
->>>>>>> d676b9dce2375893b371baf7852e7dbab49b2412:frontend/src/pages/UserProfile.jsx
       }
     };
 

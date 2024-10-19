@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-<<<<<<< HEAD:loomina_frontend/src/pages/StoryPreviewPage.jsx
-import '../css/StoryPreviewPage.css';
-=======
->>>>>>> d676b9dce2375893b371baf7852e7dbab49b2412:frontend/src/pages/StoryPreviewPage.jsx
 
 const StoryPreviewPage = () => {
   const [storyDetails, setStoryDetails] = useState(null);
