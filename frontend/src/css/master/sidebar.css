@@ -1,5 +1,5 @@
 @import url("../../css/colors.css");
-
+ 
 .sidebar {
   width: 250px;
   background-color: var(--primary-bg-color);
@@ -11,11 +11,11 @@
   transition: width 0.3s ease-in-out;
   overflow: hidden;
 }
-
+ 
 .sidebar.collapsed {
   width: 80px;
 }
-
+ 
 .sidebar-header {
   display: flex;
   align-items: center;
@@ -23,24 +23,24 @@
   padding: 18px;
   cursor: pointer;
 }
-
+ 
 .logo {
   font-size: 24px;
 }
-
+ 
 .appname {
   margin-left: 10px;
   font-size: 18px;
   font-weight: bold;
 }
-
+ 
 .menu {
   list-style: none;
   padding: 0;
   margin: 0;
   flex-grow: 1;
 }
-
+ 
 .menu-item {
   display: flex;
   align-items: center;
@@ -49,68 +49,68 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
   border-radius: 10px;
 }
-
+ 
 .menu-item:hover {
   background-color: var(--primary-hover-color);
   transform: translateX(10px);
 }
-
+ 
 .icon {
   margin-right: 15px;
   font-size: 20px;
 }
-
+ 
 .icon-list {
   margin-left: 10px;
 }
-
+ 
 .text-span {
   font-size: 16px;
 }
-
+ 
 .hr-line {
   border: none;
   height: 1px;
   background-color: var(--border-color);
   margin: 10px 0;
 }
-
+ 
 .reading-list {
   padding-left: 30px;
 }
 .reading-list li:hover {
   background-color: var(--background-color);
 }
-
-
+ 
+ 
 .mind-map ul {
   padding-left: 20px;
 }
-
+ 
 .mind-map li {
   list-style: none;
   padding: 10px 10px;
 }
-
+ 
 .mind-map .sub-list {
   padding-left: 20px;
   list-style: circle;
 }
-
+ 
 .story-item {
   display: flex;
   align-items: center;
   padding-left: 20px;
   margin-bottom: 5px;
 }
-
+ 
 .author-pic {
   width: 24px;
   height: 24px;
   border-radius: 50%;
   margin-right: 10px;
 }
-
+ 
 .list-title {
   cursor: pointer;
   padding-left: 10px;
@@ -118,38 +118,38 @@
   justify-content: flex-start;
   align-items: center;
 }
-
+ 
 .list-title:hover {
   color: #ccc;
   background-color: var(--primary-hover-color);
 }
-
+ 
 .sidebar-footer {
   padding: 7px;
   display: flex;
   position: relative;
 }
-
+ 
 .sidebar-footer .menu-item {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   cursor: pointer;
 }
-
+ 
 .sidebar-footer .icon {
   font-size: 20px;
   margin-right: 15px;
 }
-
+ 
 .sidebar-footer .collapsed .icon {
   margin-right: 0;
 }
-
+ 
 .settings {
   position: relative;
 }
-
+ 
 .floating-menu {
   position: absolute;
   width: 150px;
@@ -162,11 +162,11 @@
   z-index: 10;
   transition: opacity 0.3s ease-in-out;
 }
-
+ 
 .sidebar.collapsed .floating-menu {
   left: 80px;
 }
-
+ 
 .floating-menu ul {
   list-style-type: none;
   padding: 0;
@@ -175,31 +175,31 @@
 .floating-menu li:hover{
   background-color: var(--secondary-bg-color);
   padding: 10px;
-
+ 
 }
 .floating-menu li {
   padding: 10px 0;
   cursor: pointer;
 }
-
+ 
 .floating-menu li {
   background-color: var(--background-color);
   border-radius: 5px;
 }
-
+ 
 /* Responsive Design */
 @media (max-width: 768px) {
   .sidebar {
     width: 80px;
     z-index: 500;
   }
-
+ 
   .menu-item span,
   .appname {
     display: none;
   }
 }
-
+ 
 @media (max-width: 480px) {
   .sidebar {
     width: 100%;
@@ -207,7 +207,7 @@
     position: absolute;
     bottom: 0;
   }
-
+ 
   .sidebar-footer {
     position: relative;
     bottom: 0;

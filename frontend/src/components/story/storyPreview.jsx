@@ -10,9 +10,9 @@ const StoryPreviewPage = () => {
   const [error, setError] = useState(null);
  
   const location = useLocation();
- 
+
   const { storyId } = location.state || {};
- 
+  
   useEffect(() => {
     const fetchStoryDetails = async () => {
       const token = localStorage.getItem("token");
@@ -71,8 +71,8 @@ const StoryPreviewPage = () => {
             <p>No cover image available.</p>
           )}
         </div>
- 
- 
+
+
         <p className={styles.storySynopsis}>{storyDetails.synopsis}</p>
  
         <div className={styles.tags}>
@@ -103,7 +103,7 @@ const StoryPreviewPage = () => {
             <FaComment className={styles.icon} />
             <span>{storyDetails.numberOfComments}</span>
           </div>
- 
+
         </div>
       </div>
     </MasterPage>
