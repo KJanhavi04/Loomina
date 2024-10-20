@@ -6,6 +6,7 @@ from gridfs import GridFS
 from datetime import datetime
 from config import Config
 from mongoengine import connect
+from mongoengine import DoesNotExist
 import mongoengine
 from bson import ObjectId
 
@@ -131,3 +132,36 @@ def get_cover_image(image_id):
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+
+@story_bp.route('/get-stories', methods=['GET'])
+@jwt_required()
+def get_stories():
+    user_id = get_jwt_identity()
+    user = User.objects(id=user_id).first()
+
+    if not user:
+        return jsonify({"error": "User not found."}), 404
+
+    try:
+        # Fetch all stories for the user
+        stories = Story.objects(userId=user_id)
+
+        # Serialize the stories into a list of dictionaries
+        stories_data = [
+            {
+                "id": str(story.id),
+                "title": story.title,
+                "synopsis": story.synopsis,
+                "coverImage": f'http://localhost:5000/story/cover-image/{story.coverImage}' if story.coverImage else None
+            }
+            for story in stories
+        ]
+
+        return jsonify({
+            "stories": stories_data
+        }), 200
+
+    except DoesNotExist:
+        return jsonify({"error": "Stories not found."}), 404
