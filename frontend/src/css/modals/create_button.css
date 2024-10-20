@@ -1,37 +1,46 @@
 .create-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%; /* Ensures circular shape */
-    background-color: #001432; /* Dark blue color */
-    color: aliceblue;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    border: none; /* No initial border */
-    cursor: pointer;
-    transition: border 0.3s ease-in-out; /* Smooth transition for border */
-    
-  }
-  
-  .create-button:hover {
-    border: 3px solid; /* Apply the border on hover */
-    border-radius: 50%; /* Ensures the border remains circular */
-    border-image-slice: 1;
-    border-image-source: linear-gradient(
-      45deg,
-      red,
-      orange,
-      yellow,
-      green,
-      blue,
-      indigo,
-      violet
-    ); /* Rainbow gradient for the border */
-  }
-  
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 120px;
+  height: 55px;
+  border-radius: 55px;
+  background-color: var(--background-color); 
+  border: 1px solid var(--border-color);
+  gap: 10px; /* Gap between icon and text */
+  padding: 20px;
+  color: aliceblue;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  cursor: pointer;
+  transition: border 0.3s ease-in-out;
+}
+
+.create-button:hover {
+  border: 2px solid;
+  border-radius: 50%;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+}
+
+.create-button .icon-button {
+  font-size: 20px; /* Icon size */
+  width: 20px; /* Ensuring fixed width */
+  height: 20px; /* Ensuring fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

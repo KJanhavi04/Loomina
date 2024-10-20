@@ -1,109 +1,124 @@
+@import url("../../css/colors.css");
+
 .create-thread {
-    max-width: 800px;
-    width: 100%;
-    padding: 20px;
-    background-color: #000814;
-    border: 2px solid #001c34;
-    border-radius: 10px;
-    color: #fff;
-    position: relative;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+
+  background-color: var(--primary-bg-color);
+  /* border: 0.01rem solid var(--border-color); */
+  border-radius: 10px;
+  color: #fff;
+  position: relative;
+  margin: 90px auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .create-thread .form-container-thread {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .create-thread .form-right-thread {
-    flex: 1;
+  flex: 1;
 }
 
 .create-thread .form-group-thread {
-    position: relative;
-    margin-bottom: 20px;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 .create-thread input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #000814;
-    border: 1px solid #2d3748;
-    border-radius: 5px;
-    color: #fff;
-    outline: none;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--secondary-bg-color);
+  border: 1px solid var(--secondary-bg-color);
+  border-radius: 5px;
+  color: var(--primary-text-color);
+  outline: none;
 }
 
 .create-thread .selected-genres {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .create-thread .selected-genre-thread {
-    display: flex;
-    align-items: center;
-    background-color: #2d3748;
-    color: #fff;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 10px;
-    font-size: 14px;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  background-color: var(--container-bg-color);
+  border: 1px solid var(--secondary-bg-color);
+  color: #fff;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  font-size: 14px;
+  gap: 10px;
 }
-
+.create-thread .selected-genre-thread:hover {
+  background-color: var(--secondary-bg-color);
+}
 .remove-genre-thread {
-    background: transparent;
-    border: none;
-    color: aliceblue;
-    cursor: pointer;
-    font-size: 18px;
+  background: transparent;
+  border: none;
+  color: aliceblue;
+  cursor: pointer;
+  font-size: 18px;
 }
 
 .create-thread .create-button-thread {
-    display: block;
-    margin: 20px auto 0 auto;
-    width: 200px;
-    padding: 10px;
-    background-color: #2d3748;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: border-color 0.5s;
-    text-align: center;
+  display: block;
+  margin: 20px auto 0 auto;
+  width: 200px;
+  padding: 10px;
+  background-color: var(--secondary-bg-color);
+  color: var(--primary-text-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color 0.5s;
+  text-align: center;
 }
 
 .create-thread .create-button-thread:hover {
-    border: 3px solid;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
 }
 
 .create-thread .genre-group-thread {
-    position: relative;
+  position: relative;
 }
 
 .create-thread .genre-dropdown {
-    display: block;
-    max-height: 150px;
-    overflow-y: auto;
-    background-color: #001c34;
-    border: 1px solid #2d3748;
-    position: absolute;
-    top: 100%;
-    width: 100%;
-    z-index: 1;
+  display: block;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: var(--container-bg-color);
+  border: 1px solid var(--primary-bg-color);
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1;
 }
 
 .create-thread .genre-dropdown option {
-    padding: 10px;
-    cursor: pointer;
-    color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  color: #fff;
 }
 
 .create-thread .genre-dropdown option:hover {
-    background-color: #2d3748;
+  background-color: var(--secondary-bg-color);
 }

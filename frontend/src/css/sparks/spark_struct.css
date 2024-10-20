@@ -1,16 +1,14 @@
+@import url('../../css/colors.css');
 /* General Styles */
-body {
-  background-color: #000814; /* Dark background for the page */
-  color: #f0f8ff; /* AliceBlue for text */
-}
+
 
 /* Container for the entire spark */
 .spark-container {
   width: 600px; /* Slightly wider for bigger sparks */
-  border: 1px solid #2d3748; /* Dark border */
+  /* border: 1px solid #2d3748; Dark border */
   border-radius: 10px;
   padding: 15px;
-  background-color: #000814; /* Main background color */
+  background-color: var(--secondary-bg-color); /* Main background color */
   color: #f0f8ff; /* Text color AliceBlue */
 }
 
@@ -63,14 +61,14 @@ body {
 /* Horizontal Divider */
 .divider {
   border: 0;
-  height: 1px;
-  background-color: #2d3748;
+  height: 0.1px;
+  background-color: var(--border-color);
   margin: 10px 0;
 }
 
 /* Each spark card (scrollable content inside) */
 .spark-card {
-  background-color: #1c1e2f; /* Dark grayish-blue */
+  background-color: var(--background-color); /* Dark grayish-blue */
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   border: 1px solid #1c1e2f;

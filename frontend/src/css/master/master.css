@@ -1,6 +1,8 @@
+@import url('../../css/colors.css');
+
 .master-page {
     display: flex;
-    background: #000814;
+    background: var(--background-color);
   }
   
   .main-content {
@@ -12,7 +14,7 @@
   
   .content-area {
     /* padding: 20px; */
-    background-color: #000814;
+    background-color: var(--background-color);
     height: 100%;
     /* height: calc(100vh - 60px); Adjust based on header height */
   }

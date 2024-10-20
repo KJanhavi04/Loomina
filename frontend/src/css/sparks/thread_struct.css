@@ -1,19 +1,18 @@
-/* General Styles */
-body {
-  background-color: #000814; /* Dark background for the page */
-  color: #f0f8ff; /* AliceBlue for text */
-}
+@import url('../../css/colors.css');
 
 /* Container for the entire thread */
 .thread-container {
   width: 400px; /* Slightly wider for bigger sparks */
-  border: 1px solid #2d3748; /* Dark border */
   border-radius: 10px;
   padding: 15px;
-  background-color: #000814; /* Main background color */
+  background-color: var(--secondary-bg-color); /* Main background color */
   display: flex;
   flex-direction: column;
   color: #f0f8ff; /* Text color AliceBlue */
+  cursor: pointer;
+}
+.thread-container:hover{
+  background-color: var(--container-bg-color);
 }
 
 /* Header section */
@@ -52,7 +51,7 @@ body {
 .divider {
   border: 0;
   height: 1px;
-  background-color: #2d3748;
+  background-color: var(--border-color);
   margin: 10px 0;
 }
 

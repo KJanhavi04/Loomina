@@ -1,3 +1,4 @@
+@import url('../../css/colors.css');
 /* Background for the modal */
 .modal-background {
     position: fixed;
@@ -14,7 +15,7 @@
   
   /* Modal content box */
   .modal-content-create {
-    background-color: #000814;
+    background-color: var(--background-color);
     padding: 30px;
     border-radius: 10px;
     width: 80%;
@@ -24,7 +25,7 @@
     border: 17px #ffffff;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid #ffffff;
+    /* border: 1px solid #ffffff; */
 }
   
   /* Card items inside modal */
@@ -34,7 +35,7 @@
     align-items: center;
     padding: 15px;
     margin-bottom: 25px;
-    background-color: #2d3748;
+    background-color: var(--container-bg-color);
     border-radius: 8px;
     transition: border 0.1s ease-in-out;
     cursor: pointer;
@@ -44,7 +45,7 @@
   
   /* Hover effect for the card */
   .modal-item:hover {
-    border: 3px solid;
+    border: 1px solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
   }
@@ -57,7 +58,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: #000814; /* Dark background for icon-create */
+    background-color: var(--black-color); /* Dark background for icon-create */
   }
   
   .icon-create img {
@@ -90,7 +91,7 @@
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background-color: #000814;
+    background-color: var(--black-color);
     color: aliceblue;
     font-size: 18px;
   }

@@ -45,7 +45,7 @@ const Header = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <img src="https://cdn1.byjus.com/wp-content/uploads/2020/01/The-Frog-Prince-bedtime-stories.png" alt="Profile" className="profile-pic" />
+        <img src="profile-pic-url" alt="Profile" className="profile-pic" />
         <span className="username">Janhavi Karpe</span>
 
         {isLogoutVisible && (

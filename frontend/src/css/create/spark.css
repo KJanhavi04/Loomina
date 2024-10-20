@@ -1,56 +1,55 @@
 .sparks-container {
   padding: 20px;
-  background-color: #000814;
-  width: 1000px;
-  margin-left: 18%;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  background-color: var(--primary-bg-color); /* Updated to your liking */
+  width: 80%; /* Adjusted for responsiveness */
+  max-width: 1000px; /* Ensures the container doesn't exceed a width */
+  margin: 50px auto; /* Centering with auto left/right margins */
   position: relative;
-  border: 1px solid aliceblue;
+  /* border: 1px solid var(--primary-text-color); Updated to AliceBlue */
   border-radius: 10px;
   overflow-y: auto; /* Allow vertical scrolling */
+  /* box-shadow: 0 4px 12px var(--card-shadow); Shadow effect */
 }
 
 /* Scrollbar styling for Webkit browsers (Chrome, Safari) */
 .sparks-container::-webkit-scrollbar {
-  width: 8px; /* Width of the vertical scrollbar */
+  width: 8px;
 }
 
 .sparks-container::-webkit-scrollbar-thumb {
-  background-color: #2d3748; /* Dark background for the scrollbar thumb */
-  border-radius: 10px; /* Circular radius for the thumb */
+  background-color: var(--secondary-bg-color); /* Dark background for the scrollbar thumb */
+  border-radius: 10px;
 }
 
 .sparks-container::-webkit-scrollbar-track {
-  background-color: #000814; /* Background for the scrollbar track */
-  border-radius: 10px; /* Optional: Match the track to the thumb */
+  background-color: var(--primary-bg-color); /* Background for the scrollbar track */
+  border-radius: 10px;
 }
 
 /* Scrollbar styling for Firefox */
 .sparks-container {
-  scrollbar-width: thin; /* Makes the scrollbar thin */
-  scrollbar-color: #2d3748 #000814; /* Thumb color and track color */
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary-bg-color) var(--primary-bg-color);
 }
 
 /* Additional Styling for Circular Radius (Firefox) */
 .sparks-container::-moz-scrollbar-thumb {
-  background-color: #2d3748; /* Dark background for the scrollbar thumb */
-  border-radius: 10px; /* Circular radius for the thumb */
+  background-color: var(--secondary-bg-color);
+  border-radius: 10px;
 }
 
-/* Original styles */
 .sparks-container .spark-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 15px;
-  color: aliceblue;
+  color: var(--primary-text-color); /* AliceBlue */
 }
 
 .sparks-container .spark-header-title {
   flex-grow: 1;
   border: none;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--border-color); /* Subtle border */
   padding: 8px;
   outline: none;
   background-color: transparent;
@@ -58,7 +57,7 @@
 }
 
 .sparks-container .spark-header-title.editable {
-  border-bottom-color: #007bff;
+  border-bottom-color: var(--highlight-color); /* Updated to your highlight color */
 }
 
 .sparks-container .spark-header-title:not(.editable) {
@@ -81,14 +80,14 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  color: #ecff98;
+  color: var(--highlight-color); /* Updated to your highlight color */
   cursor: pointer;
 }
 
 .sparks-container .spark-header-icon {
   font-size: 20px;
   cursor: pointer;
-  color: #ddd;
+  color: var(--primary-text-color);
 }
 
 .sparks-container .spark-textarea-container {
@@ -104,28 +103,27 @@
 }
 
 .sparks-container .spark-textarea.posted {
-  background-color: #000814;
+  background-color: var(--secondary-bg-color); /* Updated background */
   padding-bottom: 15px;
-  
 }
 
 .sparks-container .spark-textarea textarea {
   width: 100%;
   height: 150px;
   padding: 15px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 16px;
-  color: #ddd;
+  color: var(--primary-text-color);
   resize: none;
   box-sizing: border-box;
-  background-color: #2d3748;
+  background-color: var(--secondary-bg-color); /* Updated */
 }
 
 .sparks-container .spark-textarea.posted textarea {
-  background-color: #1c1e2f;
-  color: aliceblue;
-  border: 1px solid aliceblue;
+  background-color: var(--secondary-bg-color); /* Darkened textarea on post */
+  color: var(--primary-text-color);
+  /* border: 1px solid var(--primary-text-color); Updated to AliceBlue */
   transition: ease-out 0.3s;
   text-align: justify;
 }
@@ -137,7 +135,7 @@
   top: 0;
   width: 2px;
   height: calc(100% + 15px);
-  background-color: #ccc;
+  background-color: var(--border-color); /* Updated */
 }
 
 .sparks-container .spark-textarea:first-of-type::before {
@@ -149,7 +147,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 15px;
-  color: #ddd;
+  color: var(--primary-text-color);
 }
 
 .sparks-container .spark-formatting {
@@ -163,9 +161,9 @@
 }
 
 .sparks-container .spark-add-more {
-  background-color: #000814;
+  background-color: var(--primary-bg-color);
   padding: 8px 12px;
-  border: 1px solid;
+  border: 1px solid var(--primary-text-color);
   border-radius: 4px;
   cursor: pointer;
   display: flex;
@@ -174,16 +172,10 @@
   margin-top: 20px;
 }
 
-.sparks-container .spark-textarea {
-  position: relative;
-  margin-bottom: 15px;
-  padding-bottom: 50px;
-}
-
 .sparks-container .spark-post {
   position: absolute;
+  margin-top: 10px;
   right: 0px;
-  bottom: -25px;
   background-color: #005401;
   color: white;
   border: 2px solid transparent;
@@ -219,7 +211,7 @@
   justify-content: space-around;
   margin-top: 10px;
   margin-right: 20px;
-  color: hsl(0, 0%, 87%);
+  color: var(--primary-text-color);
   font-size: 15px;
 }
 
@@ -232,10 +224,11 @@
 
 .sparks-container .spark-icon {
   font-size: 20px;
-  color: #f0f8ff;
+  color: var(--primary-text-color);
 }
 
 .sparks-container .spark-icon:hover {
   opacity: 0.8;
   color: #ff7a7a;
+  background-color: #ff7a7a;
 }

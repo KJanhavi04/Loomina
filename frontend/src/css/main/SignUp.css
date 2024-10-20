@@ -1,3 +1,4 @@
+@import url("../../css/colors.css");
 /* final for signup bioth regsiter anf login */
 
 .title {
@@ -11,12 +12,11 @@
 }
 
 .testimonial {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--secondary-bg-color);
   padding: 20px;
   border-radius: 10px;
   margin-top: 50px;
   height: fit-content;
-  
 }
 
 .testimonial-text {
@@ -69,8 +69,9 @@
   height: 100vh; /* Full viewport height */
   background: linear-gradient(
     135deg,
-    #000814,
-    #2d3748
+    var(--primary-bg-color),
+    var(--background-color),
+    #24242a
   ); /* Matching left side gradient */
 }
 
@@ -84,7 +85,11 @@
 }
 
 .left-section {
-  background: linear-gradient(135deg, #000814, #2d3748);
+  background: linear-gradient(
+    135deg,
+    var(--primary-bg-color),
+    var(--background-color)
+  );
   color: white;
   flex: 1;
   display: flex;
@@ -114,21 +119,18 @@
   background: none;
   font-size: 16px;
   transition: 0.3s;
-  color: #000814;
-  
+  color: var(--background-color);
 }
 
 .toggle-buttons .active {
-  background-color: #000814;
+  background-color: var(--primary-bg-color);
   border-radius: 10px;
   color: white;
- 
 }
 
-.toggle-buttons:hover{
-    background-color: #00081415;
-    border-radius: 10px;
-    
+.toggle-buttons:hover {
+  background-color: #00081415;
+  border-radius: 10px;
 }
 
 .signup-form input,
@@ -145,7 +147,8 @@
 .submit-btn {
   width: 100%;
   padding: 15px;
-  background-color: #000814; /* Button background color */
+  background-color: var(--container-bg-color); /* Button background color */
+  
   border: none;
   color: white;
   font-size: 16px;
@@ -153,8 +156,8 @@
   cursor: pointer;
 }
 
-.submit-btn:hover {
-  background-color: #c0b4b1; /* Button hover color */
+.outer-space .submit-btn:hover {
+  background-color: var(--secondary-bg-color); /* Button hover color */
 }
 
 .login-prompt {

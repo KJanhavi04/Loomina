@@ -1,5 +1,6 @@
+@import url('../../css/colors.css');
 .footer {
-    background-color: #191a2a;
+    background-color: var(--primary-bg-color);
     color: white;
     padding: 20px 20px;
     text-align: left;
@@ -14,7 +15,8 @@
     display: flex; 
     justify-content: space-between;
     width: 100%;
-    max-width: 1200px;
+    padding: 0px 100px 0px 100px ;
+    /* max-width: 1200px; */
   }
   
   .footer-left {
