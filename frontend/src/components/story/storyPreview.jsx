@@ -3,19 +3,20 @@ import { useLocation } from "react-router-dom";
 import { FaHeart, FaComment } from "react-icons/fa"; // Importing icons
 import styles from "../../css/story/storyPreviewPage.module.css"; // Importing the CSS module
 import MasterPage from "../master/Master";
-
+ 
 const StoryPreviewPage = () => {
   const [storyDetails, setStoryDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+ 
   const location = useLocation();
-  // const { storyId } = location.state || {}; // Assuming storyId is passed in location.state
-const storyId = "6714d118ab7be19a7e6614e0";
+ 
+  const { storyId } = location.state || {};
+ 
   useEffect(() => {
     const fetchStoryDetails = async () => {
       const token = localStorage.getItem("token");
-
+ 
       try {
         const response = await fetch(`http://localhost:5000/story/${storyId}`, {
           method: "GET",
@@ -23,12 +24,12 @@ const storyId = "6714d118ab7be19a7e6614e0";
             Authorization: `Bearer ${token}`,
           },
         });
-
+ 
         if (!response.ok) {
           const result = await response.json();
           throw new Error(result.error || "Error fetching story details");
         }
-
+ 
         const result = await response.json();
         setStoryDetails(result);
       } catch (error) {
@@ -38,14 +39,14 @@ const storyId = "6714d118ab7be19a7e6614e0";
         setLoading(false);
       }
     };
-
+ 
     fetchStoryDetails();
   }, [storyId]);
-
+ 
   if (loading) {
     return <div className={styles.loadingMessage}>Loading...</div>;
   }
-
+ 
   if (error) {
     return (
       <div className={styles.errorMessage}>
@@ -53,15 +54,15 @@ const storyId = "6714d118ab7be19a7e6614e0";
       </div>
     ); // Display error message
   }
-
+ 
   if (!storyDetails) {
     return <div className={styles.errorMessage}>No story details found.</div>;
   }
-
+ 
   return (
     <MasterPage>
       <div className={styles.storyPreviewPage}>
-      <h2 className={styles.storyTitle}>{storyDetails.title}</h2>
+        <h2 className={styles.storyTitle}>{storyDetails.title}</h2>
         {/* Cover Image at the top */}
         <div className={styles.coverImage}>
           {storyDetails.coverImageUrl ? (
@@ -70,10 +71,10 @@ const storyId = "6714d118ab7be19a7e6614e0";
             <p>No cover image available.</p>
           )}
         </div>
-
-        
+ 
+ 
         <p className={styles.storySynopsis}>{storyDetails.synopsis}</p>
-
+ 
         <div className={styles.tags}>
           <strong>Tags:</strong>
           <ul>
@@ -82,7 +83,7 @@ const storyId = "6714d118ab7be19a7e6614e0";
             ))}
           </ul>
         </div>
-
+ 
         <div className={styles.genres}>
           <strong>Genres:</strong>
           <ul>
@@ -91,10 +92,10 @@ const storyId = "6714d118ab7be19a7e6614e0";
             ))}
           </ul>
         </div>
-
+ 
         {/* Bottom-right icons for comments and likes */}
         <div className={styles.storyInfo}>
-        <div className={styles.iconWrapper}>
+          <div className={styles.iconWrapper}>
             <FaHeart className={styles.icon} />
             <span>{storyDetails.numberOfLikes}</span>
           </div>
@@ -102,11 +103,11 @@ const storyId = "6714d118ab7be19a7e6614e0";
             <FaComment className={styles.icon} />
             <span>{storyDetails.numberOfComments}</span>
           </div>
-          
+ 
         </div>
       </div>
     </MasterPage>
   );
 };
-
+ 
 export default StoryPreviewPage;

@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // For navigation
 import '../../css/story/story_card.css';
 import { FaArrowRight, FaHeart } from 'react-icons/fa'; // FontAwesome icons
-
+ 
 const StoryCard = ({ coverImage, title, synopsis, storyId }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const navigate = useNavigate();
-
+ 
   const limitedSynopsis = synopsis.split(' ').slice(0, 60).join(' ');
-
+ 
   const handleToggle = () => {
     setIsExpanded(!isExpanded);
   };
-
+ 
   const handleCardClick = () => {
-    navigate(`/story/preview/${storyId}`); // Navigate to the story preview
+    navigate(`/story-preview`, { state: { storyId: storyId} });
   };
-
+ 
   return (
     <div className="story-card" onClick={handleCardClick}>
       <img src={coverImage} alt="Cover" className="story-card-cover" />
@@ -30,11 +30,11 @@ const StoryCard = ({ coverImage, title, synopsis, storyId }) => {
         </button>
       )}
       <div className="story-card-actions">
-        
+       
         <FaArrowRight className="arrow-icon" />
       </div>
     </div>
   );
 };
-
+ 
 export default StoryCard;
