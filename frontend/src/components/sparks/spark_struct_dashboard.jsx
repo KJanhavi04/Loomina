@@ -12,7 +12,7 @@ const SparkStruct = ({
   onClick, // Add onClick prop
 }) => {
   return (
-    <div className="spark-container" onClick={onClick}>
+    <div className="spark-container" onClick={onClick}> {/* Attach onClick to the main container */}
       {/* Header Section */}
       <div className="spark-header">
         <div className="profile-pic">
@@ -22,27 +22,18 @@ const SparkStruct = ({
         <FaEllipsisH className="options-icon" />
       </div>
 
-      {/* Content Section with Image and Text */}
-      <div className="spark-content-container">
-        {/* Image on the Left */}
-        <div className="spark-image">
-          <img
-            src="https://images.unsplash.com/photo-1440964829947-ca3277bd37f8?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8ODM1OTg3fHxlbnwwfHx8fHw%3D"
-            alt="Spark"
-          />
-        </div>
+      <div><img src="https://pixlr.com/images/generator/text-to-image.webp"></img></div>
 
-        {/* Text Content on the Right */}
-        <div className="spark-card">
-          <div className="spark-content">
-            <p>{content}</p>
-          </div>
+      {/* Content Section */}
+      <div className="spark-card">
+        <div className="spark-content">
+          <p>{content}</p>
         </div>
       </div>
 
       {/* Horizontal Divider */}
       <hr className="divider" />
-
+      
       {/* Footer Icons Section */}
       <div className="spark-footer">
         <div className="footer-item">

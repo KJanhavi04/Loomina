@@ -10,8 +10,8 @@ const StoryPreviewPage = () => {
   const [error, setError] = useState(null);
 
   const location = useLocation();
-  const { storyId } = location.state || {}; // Assuming storyId is passed in location.state
-// const storyId = "6714d118ab7be19a7e6614e0";
+  // const { storyId } = location.state || {}; // Assuming storyId is passed in location.state
+const storyId = "6714d118ab7be19a7e6614e0";
   useEffect(() => {
     const fetchStoryDetails = async () => {
       const token = localStorage.getItem("token");

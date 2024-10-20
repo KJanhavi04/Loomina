@@ -1,11 +1,7 @@
-@import url('../../css/colors.css');
 /* General Styles */
 
-
-/* Container for the entire spark */
 .spark-container {
   width: 600px; /* Slightly wider for bigger sparks */
-  /* border: 1px solid #2d3748; Dark border */
   border-radius: 10px;
   padding: 15px;
   background-color: var(--secondary-bg-color); /* Main background color */
@@ -23,15 +19,14 @@
 
 /* Profile Picture */
 .profile-pic {
-  width: 40px;
-  height: 40px;
-  background-color: #2d3748; /* Profile picture placeholder */
+  width: 30px;
+  height: 30px;
+  background-color: #ceff6c;
   border-radius: 50%;
 }
 .profile-pic img {
-  width: 40px;
+  width: 30px;
   height: 30px;
-  background-color: #2d3748; /* Profile picture placeholder */
   border-radius: 50%;
 }
 
@@ -42,13 +37,6 @@
   font-weight: bold;
   font-size: 1.2em;
   color: #f0f8ff;
-}
-
-/* Number beside title */
-.number {
-  margin-right: 5px; /* Spacing between the number and title */
-  color: #f0f8ff; /* Color for the number */
-  font-weight: bold; /* Make it bold */
 }
 
 /* Options Icon (3 dots) */
@@ -66,23 +54,43 @@
   margin: 10px 0;
 }
 
+/* Content Section (Image + Text) */
+.spark-content-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Image on the Left */
+.spark-image {
+  flex-shrink: 0; /* Prevent image from shrinking */
+  margin-right: 20px; /* Add spacing between image and text */
+}
+.spark-image img {
+  margin-top: 1rem;
+  width: 200px; /* Set desired image width */
+  height: 130px; /* Maintain aspect ratio */
+  border-radius: 8px; /* Optional: round the corners */
+  object-fit: cover; /* Ensure image fills the space properly */
+}
+
 /* Each spark card (scrollable content inside) */
 .spark-card {
   background-color: var(--background-color); /* Dark grayish-blue */
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   border: 1px solid #1c1e2f;
-  max-height: 150px; /* Fixed height for each spark */
+  flex-grow: 1; /* Make the text content take up remaining space */
 }
 
 /* Scrollable content inside each spark */
 .spark-content {
-  max-height: 130px; /* Limit inner content height */
-  overflow-y: auto; /* Scroll if content is too long */
+  max-height: 130px;
+  overflow-y: auto;
   font-size: 1em;
   line-height: 1.6em;
   color: #f0f8ff;
-  padding-right: 10px; /* Extra padding to avoid text-cutoff near scrollbar */
+  padding-right: 10px;
+  text-align: justify;
 }
 
 /* Footer Section (icons) */
@@ -93,24 +101,30 @@
 }
 
 /* Footer Icons (like, comment, bookmark) */
-.footer-icon {
+.spark-container .footer-icon {
   font-size: 24px;
   cursor: pointer;
-  color: #f0f8ff;
+  color: #0088ff;
+}
+.footer-icon path{
+  color: #ff6969;
+}
+.footer-icon path:hover{
+  color: #529a00;
 }
 
 .footer-icon:hover {
   color: #ff6969;
-  opacity: 0.8; /* Slight hover effect */
+  opacity: 0.8;
 }
 
 .footer-item {
   display: flex;
-  align-items: center; /* Center align the icon and count */
+  align-items: center;
 }
 
 .footer-count {
-  margin-left: 5px; /* Add space between the icon and the count */
-  color: #f0f8ff; /* Match text color with the existing design */
-  font-size: 1em; /* Adjust font size as needed */
+  margin-left: 5px;
+  color: #f0f8ff;
+  font-size: 1em;
 }
