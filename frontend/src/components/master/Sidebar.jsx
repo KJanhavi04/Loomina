@@ -19,6 +19,7 @@ const Sidebar = () => {
   const [isSparksOpen, setIsSparksOpen] = useState(false);
   const [isStoriesOpen, setIsStoriesOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -37,13 +38,11 @@ const Sidebar = () => {
   };
 
   const handleCardClick = (path) => {
-    // Replace with actual navigation logic
-    window.location.href = path;
+    window.location.href = path;  // Navigation logic
   };
 
-  const [open, setOpen] = useState(false);
-
-  const handleClickModal = () => {
+  const handleClickModal = (e) => {
+    e.stopPropagation(); // Prevent click from bubbling up and causing a re-render
     setOpen(!open);
   };
 
@@ -57,32 +56,29 @@ const Sidebar = () => {
       <ul className="menu">
         <li className="menu-item" onClick={handleClickModal}>
           <FaPlus className="icon" />
-          {!isCollapsed && <span>Create</span>}
-          {open && <CreateModal onClose={handleClickModal} />}
+          {!isCollapsed && <span className="text-span">Create</span>}
         </li>
 
         <li className="menu-item" onClick={() => handleCardClick('/')}>
           <FaHome className="icon" />
-         
-            {!isCollapsed && <span>Dashboard</span>}
-
+          {!isCollapsed && <span className="text-span">Dashboard</span>}
         </li>
 
-        <li className="menu-item"  onClick={() => handleCardClick('/story-page')}>
+        <li className="menu-item" onClick={() => handleCardClick('/story-page')}>
           <FaBookMedical className="icon" />
-          {!isCollapsed && <span>My Story</span>}
+          {!isCollapsed && <span className="text-span">My Story</span>}
         </li>
 
         <li className="menu-item" onClick={() => handleCardClick('/user')}>
           <FaUserAlt className="icon" />
-          {!isCollapsed && <span>Profile</span>}
+          {!isCollapsed && <span className="text-span">Profile</span>}
         </li>
 
         <hr className="hr-line" />
 
         <li className="menu-item">
           <FaBookmark className="icon" />
-          {!isCollapsed && <span>Bookmark</span>}
+          {!isCollapsed && <span className="text-span">Bookmark</span>}
         </li>
 
         {/* Reading List */}
@@ -90,12 +86,8 @@ const Sidebar = () => {
           <FaBook className="icon" />
           {!isCollapsed && (
             <>
-              <span>Reading List</span>
-              {isReadingListOpen ? (
-                <BsChevronUp className="icon-list" />
-              ) : (
-                <BsChevronDown className="icon-list" />
-              )}
+              <span className="text-span">Reading List</span>
+              {isReadingListOpen ? <BsChevronUp className="icon-list" /> : <BsChevronDown className="icon-list" />}
             </>
           )}
         </li>
@@ -106,28 +98,16 @@ const Sidebar = () => {
             <li>
               <div className="list-title" onClick={toggleSparksList}>
                 <span>Sparks</span>
-                {isSparksOpen ? (
-                  <BsChevronUp className="icon-list" />
-                ) : (
-                  <BsChevronDown className="icon-list" />
-                )}
+                {isSparksOpen ? <BsChevronUp className="icon-list" /> : <BsChevronDown className="icon-list" />}
               </div>
               {isSparksOpen && (
                 <ul className="sub-list">
                   <li className="story-item">
-                    <img
-                      src="author-pic1.jpg"
-                      alt="Author Spark 1"
-                      className="author-pic"
-                    />
+                    <img src="author-pic1.jpg" alt="Author Spark 1" className="author-pic" />
                     <span>Author Spark 1</span>
                   </li>
                   <li className="story-item">
-                    <img
-                      src="author-pic2.jpg"
-                      alt="Author Spark 2"
-                      className="author-pic"
-                    />
+                    <img src="author-pic2.jpg" alt="Author Spark 2" className="author-pic" />
                     <span>Author Spark 2</span>
                   </li>
                 </ul>
@@ -138,28 +118,16 @@ const Sidebar = () => {
             <li>
               <div className="list-title" onClick={toggleStoriesList}>
                 <span>Stories</span>
-                {isStoriesOpen ? (
-                  <BsChevronUp className="icon-list" />
-                ) : (
-                  <BsChevronDown className="icon-list" />
-                )}
+                {isStoriesOpen ? <BsChevronUp className="icon-list" /> : <BsChevronDown className="icon-list" />}
               </div>
               {isStoriesOpen && (
                 <ul className="sub-list">
                   <li className="story-item">
-                    <img
-                      src="author-pic3.jpg"
-                      alt="Author Story 1"
-                      className="author-pic"
-                    />
+                    <img src="author-pic3.jpg" alt="Author Story 1" className="author-pic" />
                     <span>Author Story 1</span>
                   </li>
                   <li className="story-item">
-                    <img
-                      src="author-pic4.jpg"
-                      alt="Author Story 2"
-                      className="author-pic"
-                    />
+                    <img src="author-pic4.jpg" alt="Author Story 2" className="author-pic" />
                     <span>Author Story 2</span>
                   </li>
                 </ul>
@@ -176,7 +144,7 @@ const Sidebar = () => {
           onMouseLeave={() => setIsSettingsOpen(false)}
         >
           <FaCog className="icon" />
-          {!isCollapsed && <span>Settings</span>}
+          {!isCollapsed && <span className="text-span">Settings</span>}
 
           {isSettingsOpen && !isCollapsed && (
             <div className="floating-menu">
@@ -188,6 +156,9 @@ const Sidebar = () => {
           )}
         </div>
       </div>
+
+      {/* Move the modal outside of the menu for better performance */}
+      {open && <CreateModal onClose={handleClickModal} />}
     </div>
   );
 };

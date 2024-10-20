@@ -11,7 +11,7 @@ const StoryPreviewPage = () => {
 
   const location = useLocation();
   const { storyId } = location.state || {}; // Assuming storyId is passed in location.state
-
+// const storyId = "6714d118ab7be19a7e6614e0";
   useEffect(() => {
     const fetchStoryDetails = async () => {
       const token = localStorage.getItem("token");
@@ -61,6 +61,7 @@ const StoryPreviewPage = () => {
   return (
     <MasterPage>
       <div className={styles.storyPreviewPage}>
+      <h2 className={styles.storyTitle}>{storyDetails.title}</h2>
         {/* Cover Image at the top */}
         <div className={styles.coverImage}>
           {storyDetails.coverImageUrl ? (
@@ -70,7 +71,7 @@ const StoryPreviewPage = () => {
           )}
         </div>
 
-        <h2 className={styles.storyTitle}>{storyDetails.title}</h2>
+        
         <p className={styles.storySynopsis}>{storyDetails.synopsis}</p>
 
         <div className={styles.tags}>

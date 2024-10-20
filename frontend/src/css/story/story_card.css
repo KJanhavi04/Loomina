@@ -1,8 +1,10 @@
+@import url('../../css/colors.css');
+
 .story-card {
     width: 300px;
-    background-color: #000814; /* Dark navy background */
+    background-color: var(--secondary-bg-color); /* Dark navy background */
     border-radius: 8px;
-    box-shadow: 1px 2px 3px 4px #003a9256; /* Elevation effect */
+    box-shadow: 1px 2px 3px 4px var(--primary-bg-color); /* Elevation effect */
     overflow: hidden;
     transition: box-shadow 0.3s, transform 0.3s;
     cursor: pointer;

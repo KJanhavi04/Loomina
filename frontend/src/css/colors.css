@@ -1,0 +1,54 @@
+/* colors.css */
+:root {
+    /* Base colors */
+    --black-color: #000000;
+    --background-color: #18181b;
+    --primary-bg-color: #131316;
+    --secondary-bg-color: #202024;
+    --container-bg-color: #111113;
+
+    /* Component colors */
+    --primary-hover-color: #202024; /* Component hover color */
+    
+    /* Text colors */
+    --primary-text-color: aliceblue; /* Main text color */
+    --text-primary-color: #fafafa; /* Default text color */
+
+    /* Highlight and border colors */
+    --highlight-color: #005f73; /* Highlighted elements */
+    --border-color: #e5e7eb; /* Borders */
+    
+    /* Shadow colors */
+    --card-shadow: rgba(255, 255, 255, 0.1); /* Shadow for cards */
+    --hover-shadow: rgba(255, 255, 255, 0.2); /* Hover shadow for elements */
+
+    /* Footer colors */
+    --footer-icon-color: aliceblue; /* Footer icon color */
+}
+
+
+/* colors.css */
+/* :root {
+    --black-color: #000000;
+    
+    --secondary-text-color: #ecff98;
+    --background-color: #18181b;
+    --primary-bg-color: #131316;
+    --secondary-bg-color: #202024;
+    --container-bg-color:  #111113;
+    --primary-hover-color: #202024;
+    --primary-text-color: aliceblue;
+    --secondary-text-color: #ecff98;
+    --highlight-color: #005f73;
+    --border-color: #e5e7eb;
+    --card-shadow: rgba(255, 255, 255, 0.1);
+    --hover-shadow: rgba(255, 255, 255, 0.2);
+    --footer-icon-color: aliceblue;
+
+    background-color: rgb(34, 36, 38); 
+    --text-primary-color: #fafafa;
+
+} */
+ 
+/* #e5e7eb 18181b #202024 #111113 #202024*/
+

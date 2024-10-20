@@ -1,9 +1,11 @@
+@import url('../../css/colors.css');
+
 .dashboard {
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  background-color: #000814;
+  background-color: var(--background-color);
 }
 
 .top-section {

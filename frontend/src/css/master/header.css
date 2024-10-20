@@ -1,11 +1,13 @@
+@import url('../../css/colors.css');
+
 /* Header Container */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background-color: #000814;
-  border-bottom: 2px solid #2d3748;
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
   color: #ddd;
 }
 
@@ -28,7 +30,7 @@
   padding: 8px 12px 8px 35px; /* Padding adjusted for icon */
   border-radius: 6px;
   border-bottom: 2px solid #cbd5e0;
-  background-color: #2d3748;
+  background-color: var(--secondary-bg-color);
   color: #fff;
 }
 

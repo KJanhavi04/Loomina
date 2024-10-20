@@ -1,100 +1,112 @@
+@import url("../../css/colors.css");
+
 .top-section {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-  }
-  
-  /* Trending Section */
-  .trending-section {
-    display: flex; /* Change to flex to align items in a row */
-    flex-direction: row; /* Stack items vertically within each trending item */
-    gap: 20px; /* Space between trending items */
-    flex: 1; /* Allow it to take available space */
-  }
-  
-  /* Updated trending item to maintain a consistent width */
-  .trending-item {
-    padding: 20px;
-    background: linear-gradient(135deg, #000814, #2d3748);
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column; /* Align elements vertically */
-    /* justify-content: space-between; Space between items */
-    position: relative; /* For positioning the dots icon */
-    width: 280px; /* Fixed width for better alignment */
-  }
-  
-  /* Author Info */
-  .author-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .author-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .author-details {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .author-name {
-    font-weight: bold;
-  }
-  
-  /* Spark Summary */
-  .spark-summary {
-    margin: 10px 0;
-    text-align: justify;
-    font-weight: lighter;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+/* Trending Section */
+.trending-section {
+  display: flex; /* Change to flex to align items in a row */
+  flex-direction: row; /* Stack items vertically within each trending item */
+  gap: 20px; /* Space between trending items */
+  flex: 1; /* Allow it to take available space */
+}
+
+.trending-item {
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    var(--background-color),
+    var(--secondary-bg-color),
+    var(--hover-shadow)
     
+  );
+  border-radius: 10px;
+  color: var(--text-primary-color);
+  font-weight: bold;
+  display: flex;
+  flex-direction: column; /* Align elements vertically */
+  position: relative; /* For positioning the dots icon */
+  width: 280px; /* Fixed width for better alignment */
+  background-size: 200%; /* Double the size to allow movement */
+  background-position: 0% 0%; /* Initial background position */
+  transition: background-position 0.4s ease; /* Smooth transition */
+}
+
+.trending-item:hover {
+  background-position: 100% 100%; /* Move the background on hover */
+}
+
+/* Author Info */
+.author-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.author-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.author-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-name {
+  font-weight: bold;
+}
+
+/* Spark Summary */
+.spark-summary {
+  margin: 10px 0;
+  text-align: justify;
+  font-weight: lighter;
+  color: var(--text-primary-color);
+}
+
+.show-more {
+  color: #aaaaaa; /* A color to make it stand out */
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Dots Icon */
+.dots-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px; /* Position dots icon at bottom right */
+  font-size: 20px; /* Adjust size */
+}
+
+/* Media Queries for Trending Section */
+
+/* Medium Devices (Tablets) */
+@media (min-width: 600px) and (max-width: 900px) {
+  .trending-item {
+    width: 280px; /* Fixed width for medium devices */
+    height: auto; /* Automatic height based on content */
   }
-  
-  .show-more {
-    color: #4c94b0; /* A color to make it stand out */
-    cursor: pointer;
-    font-weight: 500;
+
+  .top-section {
+    flex-wrap: nowrap; /* Prevent wrapping to keep items side by side */
   }
-  
-  /* Dots Icon */
-  .dots-icon {
-    position: absolute;
-    bottom: 10px;
-    right: 10px; /* Position dots icon at bottom right */
-    font-size: 20px; /* Adjust size */
+}
+
+/* Small Devices (Mobile) */
+@media (max-width: 600px) {
+  .trending-section {
+    flex-direction: column; /* Stack items vertically on small screens */
   }
-  
-  /* Media Queries for Trending Section */
-  
-  /* Medium Devices (Tablets) */
-  @media (min-width: 600px) and (max-width: 900px) {
-    .trending-item {
-      width: 280px; /* Fixed width for medium devices */
-      height: auto; /* Automatic height based on content */
-    }
-  
-    .top-section {
-      flex-wrap: nowrap; /* Prevent wrapping to keep items side by side */
-    }
+
+  .trending-item {
+    width: auto; /* Full width for mobile */
+    height: auto; /* Automatic height based on content */
   }
-  
-  /* Small Devices (Mobile) */
-  @media (max-width: 600px) {
-    .trending-section {
-      flex-direction: column; /* Stack items vertically on small screens */
-    }
-  
-    .trending-item {
-      width: auto; /* Full width for mobile */
-      height: auto; /* Automatic height based on content */
-    }
-  }
-  
+}

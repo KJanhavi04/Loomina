@@ -1,35 +1,35 @@
-/* storyPreviewPage.module.css */
+@import url('../../css/colors.css');
 
 .storyPreviewPage {
-    background-color: #000814;
-    color: aliceblue;
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
     padding: 20px;
-    font-family: 'Arial', sans-serif;
     border-radius: 10px;
     max-width: 1000px;
     margin: 40px auto;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-    position: relative; /* For positioning the icons */
+    
+    position: relative;
 }
 
 .coverImage {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
+    display: flex; /* Enables flexbox layout */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    
 }
 
 .coverImage img {
-    width: 100%; /* Full width for the image */
-    height: auto;
-    border-radius: 8px;
-    border: 2px solid aliceblue;
-    max-height: 400px; /* Limit the max height for larger images */
-    object-fit: cover; /* Ensures the image scales well */
+    width: 500px; /* Set width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners */
+    
+    object-fit: cover; /* Cover the area of the container */
+    margin-bottom: 10px;
 }
 
 .storyTitle {
     font-size: 2em;
-    color: #ecff98;
+    color: var(--primary-text-color);
     margin-bottom: 10px;
     text-align: center;
 }
@@ -37,7 +37,7 @@
 .storySynopsis {
     font-size: 1.2em;
     margin-bottom: 20px;
-    color: aliceblue;
+    color: var(--primary-text-color);
     text-align: justify;
 }
 
@@ -52,8 +52,8 @@
 
 .storyPreviewPage li {
     display: inline-block;
-    background-color: #001f3f;
-    color: aliceblue;
+    background-color: var(--secondary-bg-color);
+    color: var(--primary-text-color);
     padding: 5px 10px;
     border-radius: 12px;
     margin-right: 10px;
@@ -61,13 +61,14 @@
     transition: background-color 0.2s ease;
 }
 
-li:hover {
-    background-color: #005f73;
+.storyPreviewPage li:hover {
+    background-color: var(--primary-hover-color);
+    cursor: pointer;
 }
 
 .storyInfo {
     display: flex;
-    justify-content: flex-end; /* Align icons to the bottom-right */
+    justify-content: flex-end;
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -80,20 +81,14 @@ li:hover {
 }
 
 .icon {
-    color: aliceblue;
+    color: var(--primary-text-color);
     margin-right: 5px;
-    font-size: 1.5em; /* Larger icons */
-}
-
-.coverImage img {
-    width: 100%; /* Ensure full width of the container */
-    height: auto;
-    max-height: 400px; /* Adjust this value based on the desired aspect ratio */
+    font-size: 1.5em;
 }
 
 .errorMessage, .loadingMessage {
     font-size: 1.5em;
-    color: aliceblue;
+    color: var(--primary-text-color);
     text-align: center;
     margin-top: 50px;
 }

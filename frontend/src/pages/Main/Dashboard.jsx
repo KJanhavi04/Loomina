@@ -7,7 +7,7 @@ import SparkStruct from "../../components/sparks/spark_struct";
 import Trending from "../../components/sparks/trending"; // Import Trending component
 
 const Dashboard = () => {
-  const [images, setImages] = useState([image, image1, image]);
+  const [images, setImages] = useState(["https://st4.depositphotos.com/20363444/28588/i/450/depositphotos_285881038-stock-photo-bottom-view-trees-green-fresh.jpg", "https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-spring-summer-day-in-green-nature-mountains-free-image.jpg?w=600&quality=80", image]);
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
