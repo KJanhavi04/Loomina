@@ -39,16 +39,16 @@ const NewSoloStory = () => {
     setSelectedGenres(selectedGenres.filter((g) => g !== genre));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log({
-      title,
-      synopsis,
-      tags,
-      coverImage,
-      selectedGenres,
-    });
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log({
+  //     title,
+  //     synopsis,
+  //     tags,
+  //     coverImage,
+  //     selectedGenres,
+  //   });
+  // };
 
 //image stuff
   const handleImageUpload = (e) => {
