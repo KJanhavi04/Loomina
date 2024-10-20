@@ -129,7 +129,6 @@ def get_cover_image(image_id):
         # Return the image as a response with the specified mimetype
         return send_file(file, mimetype=mimetype)
 
-
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

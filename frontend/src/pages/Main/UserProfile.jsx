@@ -5,7 +5,7 @@ import MasterPage from '../../components/master/Master';
 
 const ProfilePage = () => {
   const [profilePic, setProfilePic] = useState(null); // Handle profile picture upload
-  const [user, setUser] = useState({ username: "", email: "", password: "" });
+  const [user, setUser] = useState({ username: "", email: "", password: "", userProfileImage: "" });
   const [isEditing, setIsEditing] = useState({
     username: false,
     email: false,
@@ -19,7 +19,7 @@ const ProfilePage = () => {
         const token = localStorage.getItem("token");
         const response = await fetch("http://localhost:5000/user/user", {
           method: "GET",
-          headers: { Authorization: `Bearer ${token}` }, // Fixing the incorrect syntax
+          headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
         if (response.ok) {
@@ -27,25 +27,61 @@ const ProfilePage = () => {
             username: data.username,
             email: data.email,
             password: "******", // Do not show actual password
+            userProfileImage: data.userProfileImage, // Fetch the user's profile image URL or ObjectId
           });
+          if (data.userProfileImage) {
+            // Set the profile picture if available
+            setProfilePic(`http://localhost:5000/user/user/profile-image/${data.userProfileImage}`); // Adjust the URL based on your backend route
+
+          }
         } else {
           console.log("Failed to fetch user details:", data.message);
-          alert("Failed to load user details. Please try again."); // Show a dialog box
+          alert("Failed to load user details. Please try again.");
         }
       } catch (error) {
         console.error("Error fetching user details:", error);
-        alert("An error occurred while fetching user details."); // Show a dialog box
+        alert("An error occurred while fetching user details.");
       }
     };
     fetchUser();
   }, []);
-  
 
   // Handle profile picture upload
-  const handleProfilePicChange = (e) => {
+  const handleProfilePicChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
       setProfilePic(URL.createObjectURL(file)); // Preview the selected image
+    }
+
+    const formData = new FormData();
+    formData.append("userProfileImage", file); // Attach the image file
+
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await fetch("http://localhost:5000/user/user/upload-profile", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData, // Send the FormData object
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log("Image uploaded successfully: ", result);
+        // After a successful upload, you might want to update the user state to reflect the new profile image
+        setUser(prevUser => ({
+          ...prevUser,
+          userProfileImage: result.ImageId, // Update this according to your response structure
+        }));
+      } else {
+        console.error("Error uploading image: ", result.message);
+      }
+
+    } catch (error) {
+      console.error("Error: ", error);
     }
   };
 
