@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { FaSearch, FaSignOutAlt } from "react-icons/fa";
 import ExploreModal from '../modals/ExploreModal.jsx';
 import "../../css/master/header.css";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Header = () => {
   const [isLogoutVisible, setIsLogoutVisible] = useState(false);
   const [profilePic, setProfilePic] = useState(null);
   const [username, setUsername] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -17,10 +19,9 @@ const Header = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
-        if(response.ok){
+        if (response.ok) {
           setUsername(data.username);
-
-          if(data.userProfileImage) {
+          if (data.userProfileImage) {
             setProfilePic(`http://localhost:5000/user/user/profile-image/${data.userProfileImage}`);
           }
         } else {
@@ -49,6 +50,11 @@ const Header = () => {
     if (e.key === "Enter") {
       setIsModalOpen(true); // Open modal on pressing Enter
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove the token from local storage
+    navigate("/signup"); // Redirect to the login page (adjust the path as needed)
   };
 
   const closeModal = () => {
@@ -82,7 +88,7 @@ const Header = () => {
         <span className="username">{username || "Guest"}</span>
 
         {isLogoutVisible && (
-          <div className="logout-container">
+          <div className="logout-container" onClick={handleLogout}>
             <FaSignOutAlt className="logout-icon" />
             <span className="logout-text">Log Out</span>
           </div>

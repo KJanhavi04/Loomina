@@ -14,7 +14,7 @@ const StoryCard = ({ coverImage, title, synopsis, storyId }) => {
   };
 
   const handleCardClick = () => {
-    navigate(`/story/preview/${storyId}`); // Navigate to the story preview
+    navigate(`/story-preview`, { state: { storyId: storyId} });
   };
 
   return (

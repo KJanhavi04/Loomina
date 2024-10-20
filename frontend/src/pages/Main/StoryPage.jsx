@@ -43,6 +43,7 @@ const StoryPage = () => {
           <div className="story-page-cards">
             {stories.map(story => (
               <StoryCard
+                storyId={story.id}
                 key={story.id}  // Ensure the key is unique
                 coverImage={story.coverImage}  // Ensure this path matches your backend response
                 title={story.title}

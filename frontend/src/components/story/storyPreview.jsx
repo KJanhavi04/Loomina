@@ -10,8 +10,9 @@ const StoryPreviewPage = () => {
   const [error, setError] = useState(null);
 
   const location = useLocation();
-  // const { storyId } = location.state || {}; // Assuming storyId is passed in location.state
-const storyId = "6714d118ab7be19a7e6614e0";
+
+  const { storyId } = location.state || {};
+  
   useEffect(() => {
     const fetchStoryDetails = async () => {
       const token = localStorage.getItem("token");
@@ -61,7 +62,7 @@ const storyId = "6714d118ab7be19a7e6614e0";
   return (
     <MasterPage>
       <div className={styles.storyPreviewPage}>
-      <h2 className={styles.storyTitle}>{storyDetails.title}</h2>
+        <h2 className={styles.storyTitle}>{storyDetails.title}</h2>
         {/* Cover Image at the top */}
         <div className={styles.coverImage}>
           {storyDetails.coverImageUrl ? (
@@ -71,7 +72,7 @@ const storyId = "6714d118ab7be19a7e6614e0";
           )}
         </div>
 
-        
+
         <p className={styles.storySynopsis}>{storyDetails.synopsis}</p>
 
         <div className={styles.tags}>
@@ -94,7 +95,7 @@ const storyId = "6714d118ab7be19a7e6614e0";
 
         {/* Bottom-right icons for comments and likes */}
         <div className={styles.storyInfo}>
-        <div className={styles.iconWrapper}>
+          <div className={styles.iconWrapper}>
             <FaHeart className={styles.icon} />
             <span>{storyDetails.numberOfLikes}</span>
           </div>
@@ -102,7 +103,7 @@ const storyId = "6714d118ab7be19a7e6614e0";
             <FaComment className={styles.icon} />
             <span>{storyDetails.numberOfComments}</span>
           </div>
-          
+
         </div>
       </div>
     </MasterPage>
