@@ -1,4 +1,4 @@
-from mongoengine import Document, StringField, DateTimeField, IntField, ReferenceField, ListField
+from mongoengine import Document, StringField, DateTimeField, IntField, ReferenceField, ListField, ObjectIdField
 from .user import User
 
 class Thread(Document):
@@ -9,4 +9,6 @@ class Thread(Document):
     noOfComments = IntField(default=0)
     noOfLikes = IntField(default=0)
     prompt = StringField(required=True)
-    genre = ListField(StringField(), required=True)  # Changed to ListField to allow multiple genres
+    coverImage = ObjectIdField(required=False)
+    genre = ListField(StringField(), required=True)
+    tags = ListField(StringField(), required=True)

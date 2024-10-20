@@ -38,11 +38,84 @@ const CreateThread = () => {
     setSelectedGenres(selectedGenres.filter((g) => g !== genre));
   };
 
+  // const handleCreateSpark = async (e) => {
+  //   e.preventDefault(); // Prevent default form submission
+  //   if (selectedGenres.length === 0) {
+  //     setError("At least one genre is required."); // Set error message if no genre is selected
+  //     return;
+  //   }
+
+  //   console.log(coverImage);
+
+  //   const formData = new FormData();
+  //   formData.append("title", title);
+  //   formData.append("tags", tags.join(",")); // Convert tags array to comma-separated string
+  //   formData.append("selectedGenres", selectedGenres.join(",")); // Convert genres array to comma-separated string
+  //   formData.append("timestamp", new Date().toISOString());
+  //   formData.append("prompt", title);
+
+  //   if (coverImage) {
+  //     formData.append("coverImage", coverImage); // Append the image file here
+  //   }
+
+  //   for (let pair of formData.entries()) {
+  //     console.log(pair[0] + ': ' + pair[1]);
+  //   }
+
+  //   const token = localStorage.getItem("token");
+  //   try {
+  //     const response = await fetch(
+  //       "http://localhost:5000/thread/create-thread",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         body: formData,
+  //       }
+  //     );
+
+  //     const result = await response.json();
+  //     if (response.ok) {
+  //       console.log("Thread created successfully:", result);
+  //       navigate("/create-spark", { state: { threadId: result.threadId } });
+  //       // Clear form fields on success
+  //       setTitle("");
+  //       setPrompt("");
+  //       setTags([]);
+  //       setSelectedGenres([]);
+  //       setGenreInput("");
+  //     } else {
+  //       console.error("Error creating thread:", result.message);
+  //       setError(result.message); // Show error message from backend
+  //     }
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //     setError("An unexpected error occurred."); // Show generic error message
+  //   }
+  // };
+
   const handleCreateSpark = async (e) => {
     e.preventDefault(); // Prevent default form submission
     if (selectedGenres.length === 0) {
       setError("At least one genre is required."); // Set error message if no genre is selected
       return;
+    }
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("tags", tags.join(",")); // Convert tags array to comma-separated string
+    formData.append("selectedGenres", selectedGenres.join(",")); // Convert genres array to comma-separated string
+    formData.append("timestamp", new Date().toISOString());
+    formData.append("prompt", prompt); // Changed to use the prompt state
+
+    if (coverImage) {
+      formData.append("coverImage", coverImage); // Append the image file here
+    }
+
+    // Log FormData for debugging
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + ': ' + pair[1]);
     }
 
     const token = localStorage.getItem("token");
@@ -52,15 +125,9 @@ const CreateThread = () => {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({
-            threadTitle: title,
-            genre: selectedGenres, // Change this to selectedGenres
-            timestamp: new Date().toISOString(),
-            prompt: prompt,
-          }),
+          body: formData,
         }
       );
 
@@ -74,6 +141,8 @@ const CreateThread = () => {
         setTags([]);
         setSelectedGenres([]);
         setGenreInput("");
+        setCoverImage(null); // Clear cover image state
+        setError(""); // Clear error message
       } else {
         console.error("Error creating thread:", result.message);
         setError(result.message); // Show error message from backend
@@ -83,6 +152,8 @@ const CreateThread = () => {
       setError("An unexpected error occurred."); // Show generic error message
     }
   };
+
+
 
   const filteredGenres = genres.filter((g) =>
     g.toLowerCase().startsWith(genreInput.toLowerCase())

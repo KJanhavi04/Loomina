@@ -9,6 +9,7 @@ const SparkStruct = ({
   likes,
   comments,
   bookmarks,
+  sparkImage,
   onClick, // Add onClick prop
 }) => {
   return (
@@ -27,7 +28,7 @@ const SparkStruct = ({
         {/* Image on the Left */}
         <div className="spark-image">
           <img
-            src="https://images.unsplash.com/photo-1440964829947-ca3277bd37f8?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8ODM1OTg3fHxlbnwwfHx8fHw%3D"
+            src={sparkImage}
             alt="Spark"
           />
         </div>
