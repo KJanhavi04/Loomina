@@ -197,3 +197,22 @@
 .new-solo-story .genre-dropdown option:hover {
     background-color: var(--secondary-bg-color);
 }
+
+/* Dummy icon for cover image */
+.new-solo-story.image-placeholder-story {
+  background-color: var(--secondary-bg-color);
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.new-solo-story.image-placeholder-story::before {
+  content: "+";
+  font-size: 50px;
+  color: aliceblue;
+  padding: 10px;
+}

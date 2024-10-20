@@ -122,3 +122,46 @@
 .create-thread .genre-dropdown option:hover {
   background-color: var(--secondary-bg-color);
 }
+
+/* Dummy icon for cover image */
+.create-thread .image-placeholder-spark {
+  background-color: var(--secondary-bg-color);
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.create-thread .image-placeholder-spark::before {
+  content: "+";
+  font-size: 50px;
+  color: aliceblue;
+  padding: 10px;
+}
+
+.create-thread .cover-image-button-spark {
+  background-color: var(--secondary-bg-color);
+  color: var(--primary-text-color);
+
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-thread .cover-image-button-spark:hover {
+  background-color: var(--background-color);
+  border: 1px solid var(--secondary-bg-color);
+}
+
+/* Left side (Image preview) */
+.create-thread .form-left-spark {
+  flex: 1;
+  text-align: center;
+}
+

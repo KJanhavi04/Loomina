@@ -12,6 +12,7 @@ const CreateThread = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [error, setError] = useState(""); // Error state
   const navigate = useNavigate();
+  const [coverImage, setCoverImage] = useState(null);
 
   const genres = [
     "Fantasy",
@@ -46,19 +47,22 @@ const CreateThread = () => {
 
     const token = localStorage.getItem("token");
     try {
-      const response = await fetch("http://localhost:5000/thread/create-thread", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          threadTitle: title,
-          genre: selectedGenres, // Change this to selectedGenres
-          timestamp: new Date().toISOString(),
-          prompt: prompt,
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:5000/thread/create-thread",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            threadTitle: title,
+            genre: selectedGenres, // Change this to selectedGenres
+            timestamp: new Date().toISOString(),
+            prompt: prompt,
+          }),
+        }
+      );
 
       const result = await response.json();
       if (response.ok) {
@@ -84,9 +88,47 @@ const CreateThread = () => {
     g.toLowerCase().startsWith(genreInput.toLowerCase())
   );
 
+  //image stuff
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setCoverImage(file);
+      setCoverImagePreview(URL.createObjectURL(file)); // Create a preview of the image
+    }
+  };
+
   return (
     <MasterPage>
       <div className="create-thread">
+        <div className="form-left-spark">
+          <div className="cover-image-group-spark">
+            {coverImage ? (
+              <img
+                src={URL.createObjectURL(coverImage)}
+                alt="Cover"
+                onChange={handleImageUpload}
+                className="image-preview-spark"
+              />
+            ) : (
+              <div className="image-placeholder-story">Cover Preview</div>
+            )}
+            <button
+              type="button"
+              className="cover-image-button-spark"
+              onClick={() => document.getElementById("coverImage").click()}
+            >
+              Choose Cover Image
+            </button>
+            <input
+              type="file"
+              id="coverImage"
+              onChange={(e) => setCoverImage(e.target.files[0])}
+              accept="image/*"
+              style={{ display: "none" }}
+            />
+          </div>
+        </div>
+        {/* //normal */}
         <form onSubmit={handleCreateSpark}>
           <div className="form-container-thread">
             <div className="form-right-thread">
@@ -160,9 +202,8 @@ const CreateThread = () => {
               </div>
             </div>
           </div>
-
-          {error && <div className="error-message">{error}</div>} {/* Display error message */}
-
+          {error && <div className="error-message">{error}</div>}{" "}
+          {/* Display error message */}
           <button type="submit" className="create-button-thread">
             Create Thread
           </button>
