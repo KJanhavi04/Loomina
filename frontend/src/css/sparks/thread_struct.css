@@ -120,19 +120,19 @@
 
 .sparks-section::-webkit-scrollbar-track,
 .spark-content::-webkit-scrollbar-track {
-  background-color: #000814; /* Background for the scrollbar track */
+  background-color: var(--secondary-bg-color);; /* Background for the scrollbar track */
   border-radius: 10px; /* Optional: Match the track to the thumb */
 }
 
 /* Firefox */
 .sparks-section {
   scrollbar-width: thin; /* Makes the scrollbar thin */
-  scrollbar-color: #2d3748 #000814; /* Thumb color and track color */
+  scrollbar-color: var(--secondary-bg-color) var(--primary-bg-color);; /* Thumb color and track color */
 }
 
 .spark-content {
   scrollbar-width: thin; /* Makes the scrollbar thin */
-  scrollbar-color: #2d3748 #000814; /* Thumb color and track color */
+  scrollbar-color: var(--secondary-bg-color) var(--primary-bg-color);; /* Thumb color and track color */
 }
 
 /* Additional Styling for Circular Radius (Firefox) */
