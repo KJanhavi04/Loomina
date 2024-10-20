@@ -46,35 +46,6 @@ const CreateSpark = () => {
       }
     };
 
-    // const fetchThread = async () => {
-
-    //   try {
-    //     const response = await fetch(`http://localhost:5000/thread/threads/${threadId}`, {
-    //       method: 'GET',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //         'Authorization': `Bearer ${token}`,
-    //       },
-    //     });
-
-    //     if (!response.ok) {
-    //       const result = await response.json();
-    //       throw new Error(result.error || 'Error fetching thread details');
-    //     }
-
-    //     const result = await response.json();
-
-    //     console.log(result);
-
-    //     setThreadTitle(result['threadTitle']);
-
-    //   } catch (error) {
-    //     console.error('Error:', error);
-    //     setError(error.message); // Update error state
-    //   }
-
-    // }
-
 
     const fetchThread = async () => {
       try {

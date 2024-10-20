@@ -13,31 +13,45 @@ bcrypt = Bcrypt()
 @auth_bp.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
+    
+    # Check if user already exists
     if User.objects(email=data['email']).first():
         return jsonify(message="User already exists"), 409
     
+    # Hash the password
     hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
-    reading_list_data = data.get('readingList', [])
+    reading_list_data = data.get('readingList', [])  # Ensure proper validation for this field if needed
     reading_list = []
-
+    
+    # Create the user
     user = User(username=data['name'], email=data['email'], password=hashed_password, readingList=reading_list)
+    
     try:
         user.save()
-        # Set the generated ObjectId as threadId
-        user.update(userId=str(user.id))
-        # signup
-        if user and bcrypt.check_password_hash(user.password, data['password']):
-            access_token = create_access_token(identity=str(user.id))
-            return jsonify(token=access_token), 200
+        user.update(userId=str(user.id))  # Assign userId after saving
+        
+        # Generate access token
+        access_token = create_access_token(identity=str(user.id))
+        
+        return jsonify(message="User registered successfully", token=access_token), 201
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    return jsonify(message="User registered successfully",token=access_token), 201
+
 
 @auth_bp.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
+    
+    # Check if user exists
     user = User.objects(email=data['email']).first()
-    if user and bcrypt.check_password_hash(user.password, data['password']):
-        access_token = create_access_token(identity=str(user.id))
-        return jsonify(token=access_token), 200
-    return jsonify(message="Login failed"), 401
+    if not user:
+        return jsonify(message="User not found"), 404
+    
+    # Verify password
+    if not bcrypt.check_password_hash(user.password, data['password']):
+        return jsonify(message="Incorrect password"), 401
+    
+    # Generate access token
+    access_token = create_access_token(identity=str(user.id))
+    
+    return jsonify(token=access_token), 200

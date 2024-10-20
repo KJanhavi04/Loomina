@@ -1,8 +1,8 @@
 import React from "react";
 import { FaHeart, FaComment, FaBookmark, FaEllipsisH } from "react-icons/fa"; // Import necessary icons
-import "../../css/sparks/spark_struct.css"; // Import the CSS file
+import "../../css/sparks/spark_struct.css"; // Import the CSS file (if needed)
 
-const SparkStruct = ({
+const SparkStructShow = ({
   profilePic,
   title,
   content,
@@ -12,7 +12,7 @@ const SparkStruct = ({
   onClick, // Add onClick prop
 }) => {
   return (
-    <div className="spark-container" onClick={onClick}> {/* Attach onClick to the main container */}
+    <div className="spark-container" onClick={onClick}> {/* Add onClick here */}
       {/* Header Section */}
       <div className="spark-header">
         <div className="profile-pic">
@@ -31,7 +31,6 @@ const SparkStruct = ({
 
       {/* Horizontal Divider */}
       <hr className="divider" />
-      
       {/* Footer Icons Section */}
       <div className="spark-footer">
         <div className="footer-item">
@@ -51,4 +50,4 @@ const SparkStruct = ({
   );
 };
 
-export default SparkStruct;
+export default SparkStructShow;

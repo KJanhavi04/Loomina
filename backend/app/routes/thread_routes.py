@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from ..models.thread import Thread
+from ..models.spark import Spark
 from ..models.user import User
 from mongoengine import DoesNotExist, ValidationError
 from datetime import datetime
@@ -55,5 +56,21 @@ def get_thread(thread_id):
         thread = Thread.objects.get(threadId=thread_id)
         print(thread.threadTitle)
         return jsonify(thread = thread.to_json(), threadTitle = thread.threadTitle), 200
+    except DoesNotExist:
+        return jsonify({"error": "Thread not found."}), 404
+
+
+
+# dummy route
+@thread_bp.route('/threads/<thread_id>/sparks', methods=['GET'])
+def get_sparks_for_thread(thread_id):
+    try:
+        thread = Thread.objects.get(threadId=thread_id)
+        sparks = Spark.objects.filter(threadId=thread_id)  # Adjust this based on your Spark model
+
+        return jsonify({
+            "threadTitle": thread.threadTitle,
+            "sparks": sparks
+        }), 200
     except DoesNotExist:
         return jsonify({"error": "Thread not found."}), 404

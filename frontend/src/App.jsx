@@ -8,6 +8,7 @@ import NewSoloStory from "./pages/CreateNew/CreateSoloStory";
 import CreateThread from "./pages/CreateNew/CreateThread";
 import CreateSpark from "./components/create/CreateSpark";
 import StoryPreviewPage from "./components/story/storyPreview.jsx";
+import ThreadSparks from "./pages/ShowSparks.jsx";
 
 import "./App.css";
 import StoryPage from "./pages/Main/StoryPage.jsx";
@@ -23,8 +24,8 @@ const App = () => {
         <Route path="/" element={<DashboardPage />} />
         <Route path="/create-spark" element={<CreateSpark />} />
         <Route path="/story-page" element={<StoryPage />} />
-
         <Route path="/story-preview" element={<StoryPreviewPage />} />
+        <Route path="/show-sparks" element={<ThreadSparks />} />
 
       </Routes>
     </Router>
