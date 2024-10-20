@@ -107,15 +107,16 @@
   color: #0088ff;
 }
 .footer-icon path{
-  color: #ff6969;
+  color: #fff;
 }
 .footer-icon path:hover{
-  color: #529a00;
+  color: #ff6969;
+  /* opacity: 0.8; */
 }
 
 .footer-icon:hover {
   color: #ff6969;
-  opacity: 0.8;
+  /* opacity: 0.8; */
 }
 
 .footer-item {
