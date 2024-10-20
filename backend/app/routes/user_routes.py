@@ -25,3 +25,12 @@ def get_user():
         }
         return jsonify(user_data), 200
     return jsonify(message="User not found"), 404
+
+
+@user_bp.route('/user/<user_id>', methods=['GET'])
+def get_username(user_id):
+    user = User.objects(userId=user_id).first()  # Get the user by userId
+    if user:
+        return jsonify({"username": user.username}), 200
+    else:
+        return jsonify({"error": "User not found."}), 404

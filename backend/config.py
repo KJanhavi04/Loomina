@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 
 class Config:
     JWT_SECRET_KEY = '4f8f85bae19b40d69ba3fd5d593b6b93'
@@ -9,3 +10,4 @@ class Config:
         'port': 27017
     }
     DEBUG = True
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(days=7)

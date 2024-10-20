@@ -2,30 +2,30 @@ import React, { useState } from "react";
 import { FaSearch, FaSignOutAlt } from "react-icons/fa";
 import ExploreModal from '../modals/ExploreModal.jsx';
 import "../../css/master/header.css";
-
+ 
 const Header = () => {
   const [isLogoutVisible, setIsLogoutVisible] = useState(false);
-
+ 
   const handleMouseEnter = () => {
     setIsLogoutVisible(true);
   };
-
+ 
   const handleMouseLeave = () => {
     setIsLogoutVisible(false);
   };
-
+ 
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+ 
   const handleSearchKeyPress = (e) => {
     if (e.key === "Enter") {
       setIsModalOpen(true); // Open modal on pressing Enter
     }
   };
-
+ 
   const closeModal = () => {
     setIsModalOpen(false); // Close modal
   };
-
+ 
   return (
     <header className="header">
       {/* Search Section */}
@@ -38,16 +38,16 @@ const Header = () => {
           onKeyUp={handleSearchKeyPress}
         />
       </div>
-
+ 
       {/* Profile Section */}
       <div
         className="profile"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <img src="https://cdn1.byjus.com/wp-content/uploads/2020/01/The-Frog-Prince-bedtime-stories.png" alt="Profile" className="profile-pic" />
+        <img src="profile-pic-url" alt="Profile" className="profile-pic" />
         <span className="username">Janhavi Karpe</span>
-
+ 
         {isLogoutVisible && (
           <div className="logout-container">
             <FaSignOutAlt className="logout-icon" />
@@ -55,12 +55,12 @@ const Header = () => {
           </div>
         )}
       </div>
-
+ 
       {/* Modal that opens on Enter key */}
       {/* Render the modal component when isModalOpen is true */}
       {isModalOpen && <ExploreModal closeModal={closeModal} />}
     </header>
   );
 };
-
+ 
 export default Header;
