@@ -38,8 +38,7 @@ const Dashboard = () => {
       sparks: [
         "In a world plagued by monstrous creatures and the enigmatic dungeons they emerge from, hunters are humanity’s last line of defense. Jinwoo Sung, once known as the 'world's weakest hunter,' barely survives each harrowing encounter.",
         "His life takes a dramatic turn when he stumbles into a double dungeon—a perilous realm where danger lurks at every corner. After a near-fatal battle, he is given a chance to become something greater through a mysterious system that allows him to level up his abilities in ways no one else can.",
-        "As he progresses, Jinwoo evolves from a frail fighter into an unstoppable force, attracting powerful allies and uncovering secrets that challenge the very fabric of their reality. With each dungeon he conquers, he not only seeks revenge against those who underestimated him but also confronts the dark powers threatening to engulf the world in chaos."
-      ],
+        ],
     },
     {
       title: "Tower of God ",
@@ -47,8 +46,7 @@ const Dashboard = () => {
       sparks: [
         "In the mesmerizing universe of the Tower of God, the tower itself is a labyrinth of peril and wonder, where every floor holds unimaginable challenges and potential rewards. Bam, a boy raised in isolation, finds himself drawn into this towering structure in search of his dear friend, Rachel, who dreams of seeing the stars.",
         "As he ascends the tower, Bam encounters a diverse array of characters, each with their own ambitions and secrets. He learns that the path to the top is fraught with treachery and conflict, where allies can quickly become foes. Alongside his companions, Bam must navigate complex trials that test not only his strength but also his morality.",
-        "With each floor, he uncovers layers of the tower's mysteries and the powerful beings that govern it, challenging everything he thought he knew about friendship, sacrifice, and the pursuit of one's desires."
-      ],
+        ],
     },
     {
       title: "The Beginning After the End",
@@ -56,8 +54,7 @@ const Dashboard = () => {
       sparks: [
         "After leading a life filled with battles and political intrigue, King Grey meets his demise, only to find himself reborn as Arthur Leywin in a fantastical realm brimming with magic and opportunity. This new life offers him a chance to start afresh, but the shadows of his past linger.",
         "With the memories of his former self guiding him, Arthur embraces his new identity while striving to hone his innate magical abilities. As he grows stronger, he forms bonds with various companions, each bringing unique skills and perspectives that enrich his journey. However, as he delves deeper into the complexities of his new world, he discovers dark forces at play, threatening the peace he seeks.",
-        "With the wisdom of a king and the heart of a child, Arthur must navigate the intricacies of friendship, love, and betrayal while striving to protect his loved ones and unravel the mysteries behind his reincarnation, ultimately forging his own destiny in a world where danger lurks at every turn."
-      ],
+         ],
     },
     
   ];

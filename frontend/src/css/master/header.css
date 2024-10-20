@@ -39,13 +39,13 @@
 }
 
 /* Profile Section */
-.profile {
+.header .profile {
   display: flex;
   align-items: center;
   position: relative;
 }
 
-.profile-pic {
+.header .profile-pic {
   width: 35px;
   height: 35px;
   border-radius: 50%;

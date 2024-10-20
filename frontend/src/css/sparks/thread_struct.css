@@ -14,7 +14,7 @@
 .thread-container:hover{
   background-color: var(--container-bg-color);
 }
-
+ 
 /* Header section */
 .thread-header {
   display: flex;
@@ -39,6 +39,17 @@
   font-size: 1.2em;
   color: #f0f8ff;
 }
+
+/* Iamge */
+.thread-image img {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 360px; /* Set desired image width */
+  height: 160px; /* Maintain aspect ratio */
+  border-radius: 8px; /* Optional: round the corners */
+  object-fit: cover; /* Ensure image fills the space properly */
+}
+
 
 /* Options Icon (3 dots) */
 .options-icon {
@@ -67,11 +78,15 @@
 
 /* Each spark card (scrollable content inside) */
 .spark-card {
-  background-color: #1c1e2f; /* Dark grayish-blue */
+  background-color: var(--background-color); /* Dark grayish-blue */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #1c1e2f;
+  flex-grow: 1;
   border-radius: 8px;
   padding: 15px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-  border: 1px solid #1c1e2f;
+  border: 1px solid var(--border-color);
   max-height: 150px; /* Fixed height for each spark */
   overflow: hidden;
 }
