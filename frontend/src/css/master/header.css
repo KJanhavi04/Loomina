@@ -64,6 +64,7 @@
 .logout-container {
   display: flex;
   align-items: center;
+  width: 100px;
   
   position: absolute;
   top: 30px; /*Positioning below the username  */
@@ -71,7 +72,7 @@
   color: #fff;
   cursor: pointer;
   position: absolute;
-  background-color: #001c34;
+  background-color: var(--background-color);
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -81,8 +82,14 @@
 
 .logout-icon {
   margin-right: 10px;
+  font-size: 20px;
 }
 
 .logout-container:hover {
-  background-color: #4a5568;
+  background-color: var(--secondary-bg-color);
+}
+
+.logout-text{
+  text-align: center;
+  width: 100px;
 }

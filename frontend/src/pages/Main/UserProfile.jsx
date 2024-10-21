@@ -168,7 +168,7 @@ const ProfilePage = () => {
 
         {/* Reading List Section */}
         <div className="reading-list">
-          <h3>Reading LIST</h3>
+          <h3>Reading List</h3>
           {/* Add backend reading list integration if needed */}
         </div>
       </div>
