@@ -70,8 +70,8 @@
   background: linear-gradient(
     135deg,
     var(--primary-bg-color),
-    var(--background-color),
-    #24242a
+    var(--secondary-bg-color),
+    #3a3a41
   ); /* Matching left side gradient */
 }
 

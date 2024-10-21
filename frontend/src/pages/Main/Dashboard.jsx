@@ -7,7 +7,11 @@ import SparkStruct from "../../components/sparks/spark_struct";
 import Trending from "../../components/sparks/trending"; // Import Trending component
 
 const Dashboard = () => {
-  const [images, setImages] = useState(["https://st4.depositphotos.com/20363444/28588/i/450/depositphotos_285881038-stock-photo-bottom-view-trees-green-fresh.jpg", "https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-spring-summer-day-in-green-nature-mountains-free-image.jpg?w=600&quality=80", image]);
+  const [images, setImages] = useState([
+    "https://static1.cbrimages.com/wordpress/wp-content/uploads/2024/07/untitled-5.jpg",
+    "https://motionbgs.com/media/2770/shadows-army-solo-leveling.jpg",
+   "https://cdnb.artstation.com/p/assets/images/images/050/148/319/large/daniel-anderson-default-33-22.jpg?1654166161&dl=1",
+  ]);
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
@@ -19,14 +23,18 @@ const Dashboard = () => {
 
   const trendingItems = [
     {
-      authorPic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzOFaaYy7ZgMH3DY7Aq8_BKaUAH5khUl-ubA&s",
+      authorPic:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzOFaaYy7ZgMH3DY7Aq8_BKaUAH5khUl-ubA&s",
       authorName: "Namita Warang",
-      summary: "In a dystopian future where the totalitarian regime of Big Brother watches every move, Winston Smith works at the Ministry of Truth, altering historical records to fit the party's narrative. As he secretly yearns for rebellion and truth, he embarks on a forbidden love affair, discovering the perilous cost of individuality in a world where freedom is an illusion.",
+      summary:
+        "In a dystopian future where the totalitarian regime of Big Brother watches every move, Winston Smith works at the Ministry of Truth, altering historical records to fit the party's narrative. As he secretly yearns for rebellion and truth, he embarks on a forbidden love affair, discovering the perilous cost of individuality in a world where freedom is an illusion.",
     },
     {
-      authorPic: "https://images.inc.com/uploaded_files/image/1920x1080/getty_516137066_2000179720009280633_314131.jpg",
+      authorPic:
+        "https://images.inc.com/uploaded_files/image/1920x1080/getty_516137066_2000179720009280633_314131.jpg",
       authorName: "Shruti Patil",
-      summary: "Set in the Roaring Twenties, this novel chronicles the life of the mysterious Jay Gatsby and his obsessive love for the beautiful Daisy Buchanan. Through the eyes of narrator Nick Carraway, we explore themes of wealth, love, and the elusive American Dream as Gatsby's extravagant parties mask a deeper longing for connection and acceptance.",
+      summary:
+        "Set in the Roaring Twenties, this novel chronicles the life of the mysterious Jay Gatsby and his obsessive love for the beautiful Daisy Buchanan. Through the eyes of narrator Nick Carraway, we explore themes of wealth, love, and the elusive American Dream as Gatsby's extravagant parties mask a deeper longing for connection and acceptance.",
     },
   ];
 
@@ -34,32 +42,37 @@ const Dashboard = () => {
   const threads = [
     {
       title: "Solo Leveling",
-      profilePic: "https://qph.cf2.quoracdn.net/main-qimg-02d720cffa41ca9ede198aa8a2e603ba-lq",
+      profilePic:
+        "https://qph.cf2.quoracdn.net/main-qimg-02d720cffa41ca9ede198aa8a2e603ba-lq",
       sparks: [
         "In a world plagued by monstrous creatures and the enigmatic dungeons they emerge from, hunters are humanity’s last line of defense. Jinwoo Sung, once known as the 'world's weakest hunter,' barely survives each harrowing encounter.",
         "His life takes a dramatic turn when he stumbles into a double dungeon—a perilous realm where danger lurks at every corner. After a near-fatal battle, he is given a chance to become something greater through a mysterious system that allows him to level up his abilities in ways no one else can.",
       ],
-      threaddImg: "https://c4.wallpaperflare.com/wallpaper/865/301/276/anime-solo-leveling-sung-jin-woo-hd-wallpaper-preview.jpg"
+      threaddImg:
+        "https://c4.wallpaperflare.com/wallpaper/865/301/276/anime-solo-leveling-sung-jin-woo-hd-wallpaper-preview.jpg",
     },
     {
       title: "Tower of God ",
-      profilePic: "https://i0.wp.com/grehlakshmi.com/wp-content/uploads/2022/08/resize-1656478623332995750wildanimalcartooncharacterintheforestscenefreevector.webp?fit=1200%2C675&ssl=1",
+      profilePic:
+        "https://i0.wp.com/grehlakshmi.com/wp-content/uploads/2022/08/resize-1656478623332995750wildanimalcartooncharacterintheforestscenefreevector.webp?fit=1200%2C675&ssl=1",
       sparks: [
         "In the mesmerizing universe of the Tower of God, the tower itself is a labyrinth of peril and wonder, where every floor holds unimaginable challenges and potential rewards. Bam, a boy raised in isolation, finds himself drawn into this towering structure in search of his dear friend, Rachel, who dreams of seeing the stars.",
         "As he ascends the tower, Bam encounters a diverse array of characters, each with their own ambitions and secrets. He learns that the path to the top is fraught with treachery and conflict, where allies can quickly become foes. Alongside his companions, Bam must navigate complex trials that test not only his strength but also his morality.",
       ],
-      threaddImg: "https://i.pinimg.com/originals/23/85/db/2385dbcf111187a9828a5f3bd3745527.jpg"
+      threaddImg:
+        "https://i.pinimg.com/originals/23/85/db/2385dbcf111187a9828a5f3bd3745527.jpg",
     },
     {
       title: "The Beginning After the End",
-      profilePic: "https://cdn.firstcry.com/education/2022/08/12021320/The-Greedy-Dog-Story-With-Moral-For-Kids-696x476.jpg",
+      profilePic:
+        "https://cdn.firstcry.com/education/2022/08/12021320/The-Greedy-Dog-Story-With-Moral-For-Kids-696x476.jpg",
       sparks: [
         "After leading a life filled with battles and political intrigue, King Grey meets his demise, only to find himself reborn as Arthur Leywin in a fantastical realm brimming with magic and opportunity. This new life offers him a chance to start afresh, but the shadows of his past linger.",
         "With the memories of his former self guiding him, Arthur embraces his new identity while striving to hone his innate magical abilities. As he grows stronger, he forms bonds with various companions, each bringing unique skills and perspectives that enrich his journey. However, as he delves deeper into the complexities of his new world, he discovers dark forces at play, threatening the peace he seeks.",
       ],
-      threaddImg: "https://wallpapers.com/images/hd/twentieth-floor-challenge-tower-of-god-gv50cg7in8kmd67y.jpg"
+      threaddImg:
+        "https://wallpapers.com/images/hd/twentieth-floor-challenge-tower-of-god-gv50cg7in8kmd67y.jpg",
     },
-
   ];
 
   return (
